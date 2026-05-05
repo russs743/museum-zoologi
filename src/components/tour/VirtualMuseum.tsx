@@ -225,7 +225,7 @@ function Hotspot({ position, label, onClick }: { position: [number, number, numb
           <div className={`w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center transition-all duration-300 ${hovered ? 'scale-125 bg-white/40 shadow-[0_0_20px_rgba(255,255,255,0.5)]' : ''}`}>
              <MoveUp className="text-white animate-bounce" size={20} />
           </div>
-          <span className={`text-[9px] font-bold tracking-[0.2em] uppercase text-white bg-black/40 px-3 py-1 backdrop-blur-sm transition-all duration-300 ${hovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+          <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-white bg-black/50 px-3 py-1 backdrop-blur-sm rounded-sm shadow-md">
             {label}
           </span>
         </button>
