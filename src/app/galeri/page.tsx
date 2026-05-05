@@ -22,7 +22,7 @@ const categories = [
   {
     id: 'burung',
     label: 'Burung',
-    slug: '#',
+    slug: '/galeri/burung',
     tagline: 'Simfoni Sayap Nusantara',
     description: 'Dari keelokan Cenderawasih hingga kegagahan Elang Jawa.',
     image: 'https://images.unsplash.com/photo-1522915822365-ea6ed54feac6?auto=format&fit=crop&w=1200&q=80',
@@ -32,7 +32,7 @@ const categories = [
   {
     id: 'reptil',
     label: 'Reptil',
-    slug: '#',
+    slug: '/galeri/reptil',
     tagline: 'Warisan Purba',
     description: 'Menyaksikan sisa-sisa naga terakhir di bumi dan kura-kura purba.',
     image: 'https://images.unsplash.com/photo-1601267866579-dd8bf81db969?auto=format&fit=crop&w=1200&q=80',
@@ -42,7 +42,7 @@ const categories = [
   {
     id: 'ikan',
     label: 'Ikan',
-    slug: '#',
+    slug: '/galeri/ikan',
     tagline: 'Misteri Kedalaman',
     description: 'Keajaiban bawah laut dari fosil hidup hingga ikan air tawar eksotis.',
     image: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=1200&q=80',
@@ -52,7 +52,7 @@ const categories = [
   {
     id: 'invertebrata',
     label: 'Invertebrata',
-    slug: '#',
+    slug: '/galeri/invertebrata',
     tagline: 'Raksasa Kecil',
     description: 'Dunia makhluk tanpa tulang belakang yang menguasai ekosistem.',
     image: 'https://images.unsplash.com/photo-1533088219416-83c9a416a506?auto=format&fit=crop&w=1200&q=80',

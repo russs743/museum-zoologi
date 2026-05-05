@@ -19,7 +19,7 @@ const MUSEUM_ROOMS = {
   lobby: {
     id: 'lobby',
     name: 'Pintu Masuk Utama',
-    image: 'https://placehold.co/2400x1200/5a4f42/FFFFFF/png?text=Pintu+Masuk+Utama',
+    image: '/7019366781_cb7818eb68_o.jpg',
     fallbackColor: '#5a4f42',
     hotspots: [
       { id: 'h-lobby-1', target: 'mamalia',  position: [0, -2, -10], label: 'Ruang Mamalia' },
@@ -32,7 +32,7 @@ const MUSEUM_ROOMS = {
   burung1: {
     id: 'burung1',
     name: 'Ruang Burung I',
-    image: 'https://placehold.co/2400x1200/3a5245/FFFFFF/png?text=Ruang+Burung+I',
+    image: '/54151288982_094a2b9922_c.jpg',
     fallbackColor: '#3a5245',
     hotspots: [
       { id: 'h-b1-1', target: 'lobby',   position: [10, -2, 0],  label: 'Pintu Masuk' },
@@ -294,7 +294,7 @@ export default function VirtualMuseum() {
             enableZoom={false} 
             enablePan={false} 
             rotateSpeed={-0.4} 
-            autoRotate={!isTransitioning}
+            autoRotate={false}
             autoRotateSpeed={0.5}
           />
         </Suspense>
