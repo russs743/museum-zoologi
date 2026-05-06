@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { animalsData } from '@/data/animals';
 import AnimalCard from '@/components/ui/AnimalCard';
+import CategoryGalleryClient from '@/components/galeri/CategoryGalleryClient';
 import { ArrowLeft } from 'lucide-react';
 
 const CATEGORY_MAP: Record<string, string> = {
@@ -46,22 +47,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           <h1 className="font-[--font-playfair] text-5xl md:text-7xl lg:text-8xl text-[#3E352B] mb-6">
             {categoryInfo.title}
           </h1>
-          <p className="text-[#8b877d] max-w-2xl text-lg leading-relaxed">
-            Menampilkan koleksi {animals.length} spesies {categoryInfo.title.toLowerCase()} yang tersimpan dalam arsip Museum Zoologi Bogor.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <p className="text-[#8b877d] max-w-2xl text-lg leading-relaxed">
+              Menampilkan koleksi {animals.length} spesies {categoryInfo.title.toLowerCase()} yang tersimpan dalam arsip Museum Zoologi Bogor.
+            </p>
+            <Link href={`/galeri/${catKey}/story`} className="shrink-0 inline-flex items-center gap-3 bg-[#3E352B] text-white px-8 py-4 hover:bg-[#4a5942] transition-colors shadow-lg shadow-[#3E352B]/10 group">
+              <span className="text-xs font-bold tracking-widest uppercase">Eksplorasi Storytelling 3D</span>
+            </Link>
+          </div>
         </header>
 
-        {animals.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {animals.map((animal) => (
-              <AnimalCard key={animal.id} animal={animal} />
-            ))}
-          </div>
-        ) : (
-          <div className="py-20 text-center border border-dashed border-[#d6cebc]">
-            <p className="text-[#8b877d] italic">Koleksi untuk kategori ini belum tersedia.</p>
-          </div>
-        )}
+        <CategoryGalleryClient animals={animals} categoryTitle={categoryInfo.title} />
       </div>
     </main>
   );
