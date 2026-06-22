@@ -82,7 +82,7 @@ export default function StoryExperience({ categoryData }: { categoryData?: any }
           </div>
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
             <span className="text-[10px] uppercase tracking-widest">Scroll to Explore</span>
-            <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
+            <div className="w-px h-12 bg-linear-to-b from-white to-transparent" />
           </div>
         </section>
 
@@ -111,7 +111,7 @@ export default function StoryExperience({ categoryData }: { categoryData?: any }
         </section>
 
         {/* Section 4: Outro */}
-        <section className="story-section min-h-screen flex flex-col items-center justify-center px-8 text-center bg-gradient-to-t from-black via-transparent to-transparent pointer-events-auto">
+        <section className="story-section min-h-screen flex flex-col items-center justify-center px-8 text-center bg-linear-to-t from-black via-transparent to-transparent pointer-events-auto">
           <h2 className="reveal-text font-[--font-playfair] text-4xl md:text-7xl text-white mb-8">
             Fakta Evolusi
           </h2>

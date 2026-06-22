@@ -11,4 +11,5 @@ export interface AnimalData {
   conservationStatus: ConservationStatus;
   funFact: string; // Fakta unik
   description: string; // Deskripsi panjang spesies
+  museumImage?: string; // URL foto spesimen asli dari museum (opsional)
 }

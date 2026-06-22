@@ -45,7 +45,7 @@ const MUSEUM_ROOMS = {
   burung2: {
     id: 'burung2',
     name: 'Ruang Burung II',
-    image: 'https://placehold.co/2400x1200/3a5245/FFFFFF/png?text=Ruang+Burung+II',
+    image: '/Gemini_Generated_Image_n9rdbdn9rdbdn9rd.png',
     fallbackColor: '#3a5245',
     hotspots: [
       { id: 'h-b2-1', target: 'burung1',  position: [0, -2, 10],  label: 'Ruang Burung I' },
@@ -58,7 +58,7 @@ const MUSEUM_ROOMS = {
   mamalia: {
     id: 'mamalia',
     name: 'Ruang Mamalia',
-    image: 'https://placehold.co/2400x1200/3d5a32/FFFFFF/png?text=Ruang+Mamalia',
+    image: '/PANO_20251124_121647.jpg',
     fallbackColor: '#3d5a32',
     hotspots: [
       { id: 'h-m-1', target: 'lobby',     position: [0, -2, 10],   label: 'Pintu Masuk' },
@@ -72,7 +72,7 @@ const MUSEUM_ROOMS = {
   serangga1: {
     id: 'serangga1',
     name: 'Serangga I',
-    image: 'https://placehold.co/2400x1200/4a5540/FFFFFF/png?text=Serangga+I',
+    image: '/PANO_20251124_115615.jpg',
     fallbackColor: '#4a5540',
     hotspots: [
       { id: 'h-s1-1', target: 'mamalia',   position: [-10, -2, 0],  label: 'Ruang Mamalia' },
@@ -85,7 +85,7 @@ const MUSEUM_ROOMS = {
   serangga2: {
     id: 'serangga2',
     name: 'Serangga II',
-    image: 'https://placehold.co/2400x1200/4a5540/FFFFFF/png?text=Serangga+II',
+    image: '/PANO_20251124_120353.jpg',
     fallbackColor: '#4a5540',
     hotspots: [
       { id: 'h-s2-1', target: 'serangga1', position: [-10, -2, 0], label: 'Serangga I' },
@@ -99,7 +99,7 @@ const MUSEUM_ROOMS = {
   reptil: {
     id: 'reptil',
     name: 'Reptil & Amfibi',
-    image: 'https://placehold.co/2400x1200/4a4a32/FFFFFF/png?text=Reptil+Dan+Amfibi',
+    image: '/PANO_20251124_113647.jpg',
     fallbackColor: '#4a4a32',
     hotspots: [
       { id: 'h-r-1', target: 'mamalia',  position: [-10, -2, 0], label: 'Ruang Mamalia' },

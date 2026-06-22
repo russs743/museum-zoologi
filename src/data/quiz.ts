@@ -98,6 +98,16 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
     correctAnswer: "Trenggiling",
     fact: "Trenggiling adalah mamalia yang sangat terancam karena perburuan liar. Sisiknya terbuat dari keratin."
   },
+  {
+    id: 7,
+    categoryId: 'mamalia',
+    type: 'image-guess',
+    question: "Makhluk terbesar yang pernah hidup di Bumi, kerangkanya ada di MZB. Siapakah dia?",
+    image: '/blue-whale.png',
+    options: ["Paus Biru", "Megalodon", "Gajah Afrika", "Paus Sperma"],
+    correctAnswer: "Paus Biru",
+    fact: "Paus Biru adalah hewan terbesar di planet ini. Kerangkanya yang ada di Museum Zoologi Bogor memiliki panjang yang luar biasa."
+  },
   
   // BURUNG
   {
@@ -165,14 +175,14 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
 
   // IKAN
   {
-    id: 7,
+    id: 8,
     categoryId: 'ikan',
     type: 'image-guess',
-    question: "Makhluk terbesar yang pernah hidup di Bumi, kerangkanya ada di MZB. Siapakah dia?",
-    image: '/blue-whale.png',
-    options: ["Paus Biru", "Megalodon", "Gajah Afrika", "Paus Sperma"],
-    correctAnswer: "Paus Biru",
-    fact: "Paus Biru adalah hewan terbesar di planet ini. Kerangkanya yang ada di Museum Zoologi Bogor memiliki panjang yang luar biasa."
+    question: "Fosil hidup berusia 400 juta tahun yang ditemukan kembali hidup di perairan Sulawesi Utara (Manado) pada 1997 adalah...",
+    image: 'https://ik.imagekit.io/bhiaoqt1n/IMG_20250706_193520.jpg',
+    options: ["Arwana", "Coelacanth", "Hiu Gergaji", "Pari Manta"],
+    correctAnswer: "Coelacanth",
+    fact: "Ikan Purba Coelacanth dianggap telah punah 65 juta tahun lalu bersama dinosaurus sebelum ditemukan hidup-hidup di Manado, menjadikannya salah satu penemuan zoologi terbesar."
   },
   {
     id: 13,
@@ -184,6 +194,7 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
     correctAnswer: "Arwana Super Red",
     fact: "Arwana dijuluki sebagai 'Ikan Naga' karena sisiknya yang besar dan kumisnya yang menyerupai naga dalam mitologi."
   },
+
 
   // INVERTEBRATA
   {

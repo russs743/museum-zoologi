@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { getAnimalById } from '@/data/animals';
-import { ArrowLeft, MapPin, Leaf, ShieldAlert, BadgeInfo } from 'lucide-react';
+import { ArrowLeft, MapPin, Leaf, ShieldAlert, BadgeInfo, Camera } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 export default async function SpeciesDetailPage({ 
@@ -108,6 +108,35 @@ export default async function SpeciesDetailPage({
                 {animal.habitat}
               </p>
             </div>
+          </div>
+
+          {/* Foto Asli Museum */}
+          <div className="mt-14">
+            <h2 className="text-[#3E352B] uppercase tracking-[0.2em] font-semibold text-xs border-b border-[#d6cebc] pb-4 mb-6 relative flex items-center justify-between">
+              <span>
+                <span className="absolute -bottom-px left-0 w-12 border-b-2 border-[#485942]"></span>
+                Foto Koleksi Museum
+              </span>
+            </h2>
+            {animal.museumImage ? (
+              <div className="relative w-full overflow-hidden bg-[#2b2a26] border border-[#d6cebc] shadow-sm group rounded-sm flex items-center justify-center">
+                <img 
+                  src={animal.museumImage} 
+                  alt={`Koleksi museum ${animal.name}`}
+                  className="w-full max-h-[550px] object-contain transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-[#2b2a26]/90 via-[#2b2a26]/40 to-transparent p-6 pt-16 text-[#f2eee3] flex items-center gap-3">
+                  <Camera size={20} className="text-white/80" />
+                  <span className="text-sm font-serif italic tracking-wide text-white/90">Potret asli spesimen di Museum Zoologi Bogor</span>
+                </div>
+              </div>
+            ) : (
+              <div className="relative w-full aspect-video md:aspect-[2/1] bg-[#ebe3d5]/40 border border-dashed border-[#d6cebc] flex flex-col items-center justify-center text-[#8b877d] group hover:bg-[#ebe3d5]/70 transition-colors">
+                <Camera size={32} className="mb-3 opacity-40 group-hover:opacity-70 transition-opacity" />
+                <p className="text-sm font-serif italic text-[#6b675d]">Foto spesimen museum belum tersedia</p>
+                <p className="text-[10px] uppercase tracking-[0.1em] mt-3 font-bold opacity-60">Tambahkan URL di properti "museumImage"</p>
+              </div>
+            )}
           </div>
         </div>
 

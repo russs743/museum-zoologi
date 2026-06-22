@@ -15,9 +15,9 @@ const categories = [
     slug: '/galeri/mamalia',
     tagline: 'Sang Penjaga Daratan',
     description: 'Menelusuri jejak raksasa Sumatera hingga paus biru yang legendaris.',
-    image: 'https://images.unsplash.com/photo-1564750699222-0a00afeb0e6a?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://ik.imagekit.io/bhiaoqt1n/rishabh-pandoh--iZV3CqT7LM-unsplash.jpg',
     number: '01',
-    size: 'large', // card size configuration
+    size: 'medium', // card size configuration
   },
   {
     id: 'burung',
@@ -25,7 +25,7 @@ const categories = [
     slug: '/galeri/burung',
     tagline: 'Simfoni Sayap Nusantara',
     description: 'Dari keelokan Cenderawasih hingga kegagahan Elang Jawa.',
-    image: 'https://images.unsplash.com/photo-1522915822365-ea6ed54feac6?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://ik.imagekit.io/bhiaoqt1n/boris-smokrovic-DPXytK8Z59Y-unsplash.jpg',
     number: '02',
     size: 'medium',
   },
@@ -35,9 +35,9 @@ const categories = [
     slug: '/galeri/reptil',
     tagline: 'Warisan Purba',
     description: 'Menyaksikan sisa-sisa naga terakhir di bumi dan kura-kura purba.',
-    image: 'https://images.unsplash.com/photo-1601267866579-dd8bf81db969?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://ik.imagekit.io/bhiaoqt1n/david-clode-cqlI1Xpki8E-unsplash.jpg',
     number: '03',
-    size: 'small',
+    size: 'medium',
   },
   {
     id: 'ikan',
@@ -45,7 +45,7 @@ const categories = [
     slug: '/galeri/ikan',
     tagline: 'Misteri Kedalaman',
     description: 'Keajaiban bawah laut dari fosil hidup hingga ikan air tawar eksotis.',
-    image: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://ik.imagekit.io/bhiaoqt1n/worachat-sodsri-nCz_ZgnbtaE-unsplash.jpg',
     number: '04',
     size: 'medium',
   },
@@ -55,9 +55,9 @@ const categories = [
     slug: '/galeri/invertebrata',
     tagline: 'Raksasa Kecil',
     description: 'Dunia makhluk tanpa tulang belakang yang menguasai ekosistem.',
-    image: 'https://images.unsplash.com/photo-1533088219416-83c9a416a506?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://ik.imagekit.io/bhiaoqt1n/mackenzie-cruz-V9ounv39B7k-unsplash.jpg',
     number: '05',
-    size: 'small',
+    size: 'medium',
   },
 ];
 
