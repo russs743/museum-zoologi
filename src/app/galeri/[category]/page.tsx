@@ -51,9 +51,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             <p className="text-[#8b877d] max-w-2xl text-lg leading-relaxed">
               Menampilkan koleksi {animals.length} spesies {categoryInfo.title.toLowerCase()} yang tersimpan dalam arsip Museum Zoologi Bogor.
             </p>
-            <Link href={`/galeri/${catKey}/story`} className="shrink-0 inline-flex items-center gap-3 bg-[#3E352B] text-white px-8 py-4 hover:bg-[#4a5942] transition-colors shadow-lg shadow-[#3E352B]/10 group">
-              <span className="text-xs font-bold tracking-widest uppercase">Eksplorasi Storytelling 3D</span>
-            </Link>
           </div>
         </header>
 

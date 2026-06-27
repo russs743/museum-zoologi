@@ -50,6 +50,7 @@ export default function Header() {
               <Link href="/tour" className={`transition-colors ${pathname === '/tour' ? 'text-[#485942] border-b border-[#485942] pb-0.5' : 'text-[#8b877d] hover:text-[#485942]'}`}>Tour</Link>
               <Link href="/denah" className={`transition-colors ${pathname === '/denah' ? 'text-[#485942] border-b border-[#485942] pb-0.5' : 'text-[#8b877d] hover:text-[#485942]'}`}>Denah</Link>
               <Link href="/kuis" className={`transition-colors ${pathname === '/kuis' ? 'text-[#485942] border-b border-[#485942] pb-0.5' : 'text-[#8b877d] hover:text-[#485942]'}`}>Kuis</Link>
+              <Link href="/evaluasi" className={`transition-colors ${pathname === '/evaluasi' ? 'text-[#485942] border-b border-[#485942] pb-0.5' : 'text-[#8b877d] hover:text-[#485942]'}`}>Evaluasi</Link>
             </div>
 
             {/* Mobile Hamburger Button */}
@@ -77,6 +78,7 @@ export default function Header() {
             <Link href="/tour" className={`transition-colors hover:text-[#485942] ${pathname === '/tour' ? 'text-[#485942] border-b-2 border-[#485942] pb-1' : ''}`}>Tour</Link>
             <Link href="/denah" className={`transition-colors hover:text-[#485942] ${pathname === '/denah' ? 'text-[#485942] border-b-2 border-[#485942] pb-1' : ''}`}>Denah</Link>
             <Link href="/kuis" className={`transition-colors hover:text-[#485942] ${pathname === '/kuis' ? 'text-[#485942] border-b-2 border-[#485942] pb-1' : ''}`}>Kuis</Link>
+            <Link href="/evaluasi" className={`transition-colors hover:text-[#485942] ${pathname === '/evaluasi' ? 'text-[#485942] border-b-2 border-[#485942] pb-1' : ''}`}>Evaluasi</Link>
           </div>
           
           <div className="absolute bottom-12 text-[10px] uppercase tracking-widest text-[#8b877d]">

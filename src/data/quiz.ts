@@ -9,10 +9,8 @@ export interface QuizCategory {
 export interface QuizQuestion {
   id: number;
   categoryId: string;
-  type: 'image-guess' | 'sound-guess' | 'zoom-guess' | 'blur-guess' | 'silhouette-guess';
+  type: 'knowledge';
   question: string;
-  image?: string;
-  sound?: string;
   options: string[];
   correctAnswer: string;
   fact: string;
@@ -61,9 +59,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 1,
     categoryId: 'mamalia',
-    type: 'zoom-guess',
+    type: 'knowledge',
     question: "Siapakah 'Manusia Hutan' yang memiliki 96.9% DNA yang sama dengan kita?",
-    image: '/orangutan.png',
     options: ["Orangutan", "Simpanse", "Gorila", "Lutung"],
     correctAnswer: "Orangutan",
     fact: "Orangutan berbagi sekitar 96,9% DNA dengan manusia. Nama mereka berasal dari bahasa Melayu yang berarti 'Manusia Hutan'."
@@ -71,9 +68,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 2,
     categoryId: 'mamalia',
-    type: 'image-guess',
-    question: "Siapakah pemilik kulit berlipat-lipat yang menyerupai baju zirah ini?",
-    image: 'https://images.unsplash.com/photo-1504194098406-89689689880f?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Hewan apakah yang memiliki kulit berlipat-lipat menyerupai baju zirah?",
     options: ["Badak Jawa", "Gajah Sumatera", "Komodo", "Tapir"],
     correctAnswer: "Badak Jawa",
     fact: "Badak Jawa memiliki kulit berlipat-lipat yang menyerupai baju zirah baja. Spesimennya di MZB adalah salah satu yang paling berharga."
@@ -81,9 +77,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 11,
     categoryId: 'mamalia',
-    type: 'silhouette-guess',
-    question: "Melihat siluetnya yang unik, hewan berkantung apa ini?",
-    image: 'https://images.unsplash.com/photo-1534123280145-885789500742?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Hewan berkantung asli Indonesia yang pandai memanjat pohon adalah?",
     options: ["Kanguru Pohon", "Kuskus", "Walabi", "Sugar Glider"],
     correctAnswer: "Kanguru Pohon",
     fact: "Indonesia memiliki kanguru pohon di Papua. Berbeda dengan sepupunya di Australia, mereka sangat lincah memanjat pohon."
@@ -91,9 +86,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 14,
     categoryId: 'mamalia',
-    type: 'blur-guess',
-    question: "Mamalia ini memiliki sisik keras dan sering menggulung seperti bola saat terancam.",
-    image: 'https://images.unsplash.com/photo-1591824438708-ce405f36ba3d?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Mamalia yang memiliki sisik keras dan sering menggulung seperti bola saat terancam adalah?",
     options: ["Trenggiling", "Landak", "Armadillo", "Kura-kura"],
     correctAnswer: "Trenggiling",
     fact: "Trenggiling adalah mamalia yang sangat terancam karena perburuan liar. Sisiknya terbuat dari keratin."
@@ -101,9 +95,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 7,
     categoryId: 'mamalia',
-    type: 'image-guess',
+    type: 'knowledge',
     question: "Makhluk terbesar yang pernah hidup di Bumi, kerangkanya ada di MZB. Siapakah dia?",
-    image: '/blue-whale.png',
     options: ["Paus Biru", "Megalodon", "Gajah Afrika", "Paus Sperma"],
     correctAnswer: "Paus Biru",
     fact: "Paus Biru adalah hewan terbesar di planet ini. Kerangkanya yang ada di Museum Zoologi Bogor memiliki panjang yang luar biasa."
@@ -113,9 +106,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 3,
     categoryId: 'burung',
-    type: 'image-guess',
+    type: 'knowledge',
     question: "Burung ini dijuluki 'Burung Surga' karena keindahan bulunya. Siapakah dia?",
-    image: 'https://images.unsplash.com/photo-1522915822365-ea6ed54feac6?auto=format&fit=crop&w=800&q=80',
     options: ["Merak Hijau", "Cenderawasih", "Elang Jawa", "Kakatua"],
     correctAnswer: "Cenderawasih",
     fact: "Nama latinnya 'apoda' berarti 'tanpa kaki' karena dulu pedagang Eropa mengira burung ini selalu terbang di surga tanpa pernah mendarat."
@@ -123,9 +115,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 4,
     categoryId: 'burung',
-    type: 'zoom-guess',
+    type: 'knowledge',
     question: "Inspirasi lambang negara Indonesia berasal dari burung ini. Siapakah dia?",
-    image: 'https://images.unsplash.com/photo-1611640191307-28569527ec31?auto=format&fit=crop&w=800&q=80',
     options: ["Garuda", "Elang Jawa", "Elang Brontok", "Alap-alap"],
     correctAnswer: "Elang Jawa",
     fact: "Elang Jawa (Nisaetus bartelsi) diyakini sebagai inspirasi lambang negara Garuda Pancasila karena jambulnya yang khas."
@@ -133,9 +124,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 12,
     categoryId: 'burung',
-    type: 'blur-guess',
-    question: "Burung ini memiliki paruh raksasa yang sangat ikonik. Siapakah dia?",
-    image: 'https://images.unsplash.com/photo-1510134027732-c67b9609206d?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Burung ini memiliki paruh raksasa yang sangat ikonik dan merupakan kebanggaan masyarakat Kalimantan. Siapakah dia?",
     options: ["Rangkong Gading", "Enggang", "Toucan", "Pelatuk"],
     correctAnswer: "Rangkong Gading",
     fact: "Rangkong Gading adalah burung nasional kebanggaan masyarakat Kalimantan yang kini statusnya terancam punah."
@@ -145,9 +135,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 5,
     categoryId: 'reptil',
-    type: 'image-guess',
+    type: 'knowledge',
     question: "Kadal terbesar di dunia yang hanya ada di Indonesia. Siapakah dia?",
-    image: 'https://images.unsplash.com/photo-1601267866579-dd8bf81db969?auto=format&fit=crop&w=800&q=80',
     options: ["Biawak Air", "Komodo", "Iguana", "Tokek Hutan"],
     correctAnswer: "Komodo",
     fact: "Komodo memiliki kelenjar bisa di rahangnya dan mampu mendeteksi bau mangsa dari jarak hingga 10 kilometer."
@@ -155,9 +144,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 6,
     categoryId: 'reptil',
-    type: 'silhouette-guess',
-    question: "Dari siluetnya, kura-kura raksasa apa yang mendiami perairan kita ini?",
-    image: 'https://images.unsplash.com/photo-1544213426-5482e350ad00?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Kura-kura laut raksasa apa yang mendiami perairan kita dan mampu bermigrasi ribuan kilometer?",
     options: ["Penyu Belimbing", "Kura-kura Brazil", "Penyu Hijau", "Bulus"],
     correctAnswer: "Penyu Belimbing",
     fact: "Penyu Belimbing adalah penyu terbesar di dunia dan mampu bermigrasi ribuan kilometer melintasi samudra."
@@ -165,9 +153,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 15,
     categoryId: 'reptil',
-    type: 'zoom-guess',
-    question: "Sisik yang menyerupai motif kain tradisional Nusantara. Ular apakah ini?",
-    image: 'https://images.unsplash.com/photo-1611082269225-86641fb096e4?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Ular terpanjang di dunia yang sisiknya menyerupai motif kain tradisional Nusantara adalah?",
     options: ["Ular Kobra", "Sanca Batik", "Ular Hijau", "Piton Pohon"],
     correctAnswer: "Sanca Batik",
     fact: "Sanca Batik adalah ular terpanjang di dunia. Pola sisiknya yang rumit berfungsi sebagai kamuflase sempurna di lantai hutan."
@@ -177,19 +164,17 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 8,
     categoryId: 'ikan',
-    type: 'image-guess',
-    question: "Fosil hidup berusia 400 juta tahun yang ditemukan kembali hidup di perairan Sulawesi Utara (Manado) pada 1997 adalah...",
-    image: 'https://ik.imagekit.io/bhiaoqt1n/IMG_20250706_193520.jpg',
+    type: 'knowledge',
+    question: "Fosil hidup yang dianggap punah bersama dinosaurus 66 juta tahun lalu, ditemukan kembali hidup di Manado pada 1998. Siapakah dia?",
     options: ["Arwana", "Coelacanth", "Hiu Gergaji", "Pari Manta"],
     correctAnswer: "Coelacanth",
-    fact: "Ikan Purba Coelacanth dianggap telah punah 65 juta tahun lalu bersama dinosaurus sebelum ditemukan hidup-hidup di Manado, menjadikannya salah satu penemuan zoologi terbesar."
+    fact: "Coelacanth dianggap telah punah 66 juta tahun lalu bersama dinosaurus. Pada 1998, ilmuwan Mark Erdmann menemukannya hidup-hidup di perairan Manado, Sulawesi Utara — menjadikannya salah satu penemuan zoologi terbesar abad ini."
   },
   {
     id: 13,
     categoryId: 'ikan',
-    type: 'blur-guess',
-    question: "Ikan air tawar predator ini sangat populer sebagai simbol keberuntungan.",
-    image: 'https://images.unsplash.com/photo-1524704659690-3f8037201b3d?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Ikan air tawar predator ini sangat populer sebagai simbol keberuntungan dan dijuluki 'Ikan Naga'.",
     options: ["Arwana Super Red", "Ikan Mas", "Koi", "Ikan Gabus"],
     correctAnswer: "Arwana Super Red",
     fact: "Arwana dijuluki sebagai 'Ikan Naga' karena sisiknya yang besar dan kumisnya yang menyerupai naga dalam mitologi."
@@ -200,9 +185,8 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 9,
     categoryId: 'invertebrata',
-    type: 'zoom-guess',
-    question: "Siapakah pemilik 'mahkota' tanduk yang sangat kuat ini?",
-    image: 'https://images.unsplash.com/photo-1605335198904-89f4175628b0?auto=format&fit=crop&w=800&q=80',
+    type: 'knowledge',
+    question: "Hewan invertebrata apakah yang dapat mengangkat beban 850 kali berat tubuhnya sendiri?",
     options: ["Kumbang Tanduk", "Rangkong Gading", "Rusa Bawean", "Belalang Sembah"],
     correctAnswer: "Kumbang Tanduk",
     fact: "Kumbang tanduk dapat mengangkat beban 850 kali berat tubuhnya sendiri, menjadikannya salah satu makhluk terkuat di bumi."
@@ -210,11 +194,11 @@ export const ZOOLOGY_QUIZ_DATA: QuizQuestion[] = [
   {
     id: 10,
     categoryId: 'invertebrata',
-    type: 'silhouette-guess',
-    question: "Serangga malam apa yang memiliki sayap lebar seindah lukisan ini?",
-    image: 'https://images.unsplash.com/photo-1463171356611-0e421b444b0d?auto=format&fit=crop&w=800&q=80',
-    options: ["Ngengat Gajah", "Kupu-kupu Barong", "Lebah Madu", "Lalat Hijau"],
-    correctAnswer: "Kupu-kupu Barong",
-    fact: "Kupu-kupu Barong (Attacus atlas) adalah salah satu ngengat terbesar di dunia dengan rentang sayap mencapai 25 cm."
+    type: 'knowledge',
+    question: "Ngengat raksasa apa yang memiliki sayap lebar seindah lukisan dan merupakan salah satu yang terbesar di dunia?",
+    options: ["Ngengat Gajah", "Ngengat Atlas", "Lebah Madu", "Lalat Hijau"],
+    correctAnswer: "Ngengat Atlas",
+    fact: "Ngengat Atlas (Attacus atlas) adalah salah satu ngengat terbesar di dunia dengan rentang sayap mencapai 25–30 cm. Ia adalah ngengat, bukan kupu-kupu — aktif di malam hari dan tidak makan sama sekali saat dewasa."
   }
 ];
+

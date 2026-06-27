@@ -2,14 +2,11 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
-import { Check, X, Award, Trophy, Footprints, ArrowRight, RefreshCcw, Share2, ChevronLeft, BookOpen, Camera, Layers, Download } from 'lucide-react';
+import { Check, X, Award, Trophy, Footprints, ArrowRight, RefreshCcw, ChevronLeft, BookOpen, Download } from 'lucide-react';
 import { ZOOLOGY_QUIZ_DATA, QUIZ_CATEGORIES, QuizCategory } from '@/data/quiz';
 
-type QuizType = 'knowledge' | 'visual' | 'mixed';
-
 export default function ZoologyQuiz() {
-  const [gameState, setGameState] = useState<'welcome' | 'types' | 'chapters' | 'playing' | 'result'>('welcome');
-  const [selectedType, setSelectedType] = useState<QuizType | null>(null);
+  const [gameState, setGameState] = useState<'welcome' | 'chapters' | 'playing' | 'result'>('welcome');
   const [selectedCategory, setSelectedCategory] = useState<QuizCategory | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -22,13 +19,11 @@ export default function ZoologyQuiz() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [showFact, setShowFact] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const questionRef = useRef<HTMLDivElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
 
-  // Filter questions based on TYPE and CATEGORY
   // Recalculate scale for mobile
   useEffect(() => {
     if (gameState === 'result' && playerName) {
@@ -50,31 +45,24 @@ export default function ZoologyQuiz() {
   const filteredQuestions = useMemo(() => {
     let questions = [...ZOOLOGY_QUIZ_DATA];
     
-    // Filter by Type
-    if (selectedType === 'knowledge') {
-      questions = questions.filter(q => q.type === 'image-guess');
-    } else if (selectedType === 'visual') {
-      questions = questions.filter(q => ['zoom-guess', 'blur-guess', 'silhouette-guess'].includes(q.type));
-    }
-    
     // Filter by Category (if selected)
     if (selectedCategory) {
       questions = questions.filter(q => q.categoryId === selectedCategory.id);
     }
     
-    // If mixed or no specific category, just take a subset
+    // If no specific category, just take a subset
     if (!selectedCategory) {
       questions = questions.sort(() => Math.random() - 0.5).slice(0, 10);
     }
 
     return questions;
-  }, [selectedCategory, selectedType]);
+  }, [selectedCategory]);
 
   const currentQuestion = filteredQuestions[currentQuestionIndex];
 
   // GSAP Animations
   useEffect(() => {
-    if (['welcome', 'types', 'chapters'].includes(gameState) && containerRef.current) {
+    if (['welcome', 'chapters'].includes(gameState) && containerRef.current) {
       const animElements = containerRef.current.querySelectorAll('.content-anim');
       gsap.fromTo(animElements, 
         { opacity: 0, y: 30 },
@@ -102,13 +90,8 @@ export default function ZoologyQuiz() {
     }
   }, [showFact, selectedOption]);
 
-  const goToTypes = () => setGameState('types');
+  const goToChapters = () => setGameState('chapters');
   
-  const selectType = (type: QuizType) => {
-    setSelectedType(type);
-    setGameState('chapters');
-  };
-
   const startChapter = (category: QuizCategory | 'all') => {
     if (category === 'all') {
       setSelectedCategory(null);
@@ -116,8 +99,6 @@ export default function ZoologyQuiz() {
       setSelectedCategory(category);
     }
     
-    // If the filtered questions list is empty for this combination, we might need a fallback
-    // But for this demo, we assume the data is sufficient
     setGameState('playing');
     setCurrentQuestionIndex(0);
     setScore(0);
@@ -155,7 +136,6 @@ export default function ZoologyQuiz() {
         duration: 0.3,
         onComplete: () => {
           setCurrentQuestionIndex(prev => prev + 1);
-          setImgLoaded(false); // Reset loading state for next image
           gsap.fromTo(questionRef.current, 
             { opacity: 0, x: 50 },
             { opacity: 1, x: 0, duration: 0.3 }
@@ -170,10 +150,9 @@ export default function ZoologyQuiz() {
   const getRank = () => {
     if (filteredQuestions.length === 0) return { title: 'Observer', color: '#8b877d' };
     const percentage = (score / filteredQuestions.length) * 100;
-    const typeLabel = selectedType === 'knowledge' ? 'Scholar' : (selectedType === 'visual' ? 'Detective' : 'Explorer');
-    if (percentage === 100) return { title: `Legendary ${typeLabel}`, color: '#4a5942' };
-    if (percentage >= 50) return { title: `Expert ${typeLabel}`, color: '#c4843a' };
-    return { title: `Apprentice ${typeLabel}`, color: '#8b877d' };
+    if (percentage === 100) return { title: `Legendary Scholar`, color: '#4a5942' };
+    if (percentage >= 50) return { title: `Expert Scholar`, color: '#c4843a' };
+    return { title: `Apprentice Scholar`, color: '#8b877d' };
   };
 
   const handleDownloadCertificate = async () => {
@@ -216,62 +195,14 @@ export default function ZoologyQuiz() {
               Misi Zoologi
             </h1>
             <p className="content-anim text-[#8b877d] text-xl max-w-xl mb-12 leading-relaxed">
-              Selamat datang di pusat pelatihan peneliti MZB. Pilih jalur spesialisasimu.
+              Selamat datang di pusat pelatihan peneliti MZB. Uji wawasanmu tentang fakta unik satwa nusantara.
             </p>
             <button 
-              onClick={goToTypes}
+              onClick={goToChapters}
               className="content-anim group relative px-16 py-5 bg-[#3E352B] text-[#f9f7f4] overflow-hidden transition-all hover:bg-[#4a5942] flex items-center justify-center"
             >
-              <span className="relative z-10 font-bold tracking-[0.3em] uppercase text-sm">Masuk Laboratorium</span>
+              <span className="relative z-10 font-bold tracking-[0.3em] uppercase text-sm">Mulai Kuis</span>
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </button>
-          </div>
-        )}
-
-        {/* ── TYPE SELECTION SCREEN ── */}
-        {gameState === 'types' && (
-          <div className="relative z-10 p-12 text-center">
-            <h2 className="content-anim font-[--font-playfair] text-4xl text-[#3E352B] mb-12">Pilih Jenis Tantangan</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <div 
-                onClick={() => selectType('knowledge')}
-                className="content-anim group cursor-pointer bg-[#f9f7f4] border border-[#d6cebc] p-8 hover:bg-[#4a5942] transition-all duration-500 flex flex-col items-center"
-              >
-                <div className="w-14 h-14 bg-[#eae4d3] group-hover:bg-white/20 rounded-full flex items-center justify-center mb-6 transition-colors">
-                  <BookOpen className="text-[#4a5942] group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-[--font-playfair] text-[#3E352B] group-hover:text-white mb-3">Kuis Pengetahuan</h3>
-                <p className="text-[#8b877d] group-hover:text-white/80 text-xs mb-6">Uji wawasanmu tentang fakta unik satwa nusantara.</p>
-                <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#4a5942] group-hover:text-white">Pilih Jalur Ilmuwan</span>
-              </div>
-              <div 
-                onClick={() => selectType('visual')}
-                className="content-anim group cursor-pointer bg-[#f9f7f4] border border-[#d6cebc] p-8 hover:bg-[#c4843a] transition-all duration-500 flex flex-col items-center"
-              >
-                <div className="w-14 h-14 bg-[#eae4d3] group-hover:bg-white/20 rounded-full flex items-center justify-center mb-6 transition-colors">
-                  <Camera className="text-[#c4843a] group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-[--font-playfair] text-[#3E352B] group-hover:text-white mb-3">Tebak Gambar</h3>
-                <p className="text-[#8b877d] group-hover:text-white/80 text-xs mb-6">Tantangan visual: Siluet, Blur, dan Tekstur Satwa.</p>
-                <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#c4843a] group-hover:text-white">Pilih Jalur Detektif</span>
-              </div>
-              <div 
-                onClick={() => selectType('mixed')}
-                className="content-anim group cursor-pointer bg-[#f9f7f4] border border-[#d6cebc] p-8 hover:bg-[#3E352B] transition-all duration-500 flex flex-col items-center"
-              >
-                <div className="w-14 h-14 bg-[#eae4d3] group-hover:bg-white/20 rounded-full flex items-center justify-center mb-6 transition-colors">
-                  <Layers className="text-[#3E352B] group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-[--font-playfair] text-[#3E352B] group-hover:text-white mb-3">Ekspedisi Campuran</h3>
-                <p className="text-[#8b877d] group-hover:text-white/80 text-xs mb-6">Gabungan tantangan pengetahuan dan visual.</p>
-                <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#3E352B] group-hover:text-white">Mulai Petualangan</span>
-              </div>
-            </div>
-            <button 
-              onClick={() => setGameState('welcome')}
-              className="content-anim mt-10 text-[10px] font-bold tracking-[0.2em] uppercase text-[#8b877d] hover:text-[#3E352B] transition-colors"
-            >
-              Kembali
             </button>
           </div>
         )}
@@ -282,13 +213,13 @@ export default function ZoologyQuiz() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-[#d6cebc] pb-8">
               <div className="content-anim text-left">
                 <h2 className="font-[--font-playfair] text-3xl md:text-4xl text-[#3E352B] mb-2">Pilih Area Misi</h2>
-                <p className="text-[#8b877d] text-sm italic">Mode: {selectedType === 'knowledge' ? 'Pengetahuan' : (selectedType === 'visual' ? 'Tebak Gambar' : 'Campuran')}</p>
+                <p className="text-[#8b877d] text-sm italic">Mode: Pengetahuan</p>
               </div>
               <button 
-                onClick={() => setGameState('types')}
+                onClick={() => setGameState('welcome')}
                 className="content-anim text-[10px] font-bold tracking-[0.2em] uppercase text-[#3E352B] hover:text-[#4a5942] transition-colors flex items-center gap-2"
               >
-                <ChevronLeft size={14} /> Ganti Jenis Kuis
+                <ChevronLeft size={14} /> Kembali
               </button>
             </div>
 
@@ -339,7 +270,7 @@ export default function ZoologyQuiz() {
                 </button>
                 <div className="text-left">
                   <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#8b877d]">{selectedCategory?.title || 'Seluruh Area'}</p>
-                  <h3 className="font-[--font-playfair] text-lg text-[#3E352B]">{selectedType === 'knowledge' ? 'Kuis Pengetahuan' : 'Tebak Gambar'}</h3>
+                  <h3 className="font-[--font-playfair] text-lg text-[#3E352B]">Kuis Pengetahuan</h3>
                 </div>
               </div>
               <div className="text-right">
@@ -356,7 +287,7 @@ export default function ZoologyQuiz() {
               />
             </div>
             
-            <div className="p-8 md:p-12">
+            <div className="p-8 md:p-12 max-w-4xl mx-auto">
               <div className="mb-6 flex items-center gap-2 text-[#8b877d]">
                 <Footprints size={16} />
                 <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-left">
@@ -365,81 +296,47 @@ export default function ZoologyQuiz() {
               </div>
 
               <div ref={questionRef}>
-                <h2 className="text-2xl md:text-3xl font-[--font-playfair] text-[#3E352B] mb-8 leading-tight text-left">
+                <h2 className="text-2xl md:text-3xl font-[--font-playfair] text-[#3E352B] mb-12 leading-tight text-center">
                   {currentQuestion.question}
                 </h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                  <div className="relative aspect-square bg-[#eae4d3] border border-[#d6cebc] overflow-hidden group flex items-center justify-center shadow-inner">
-                    {!imgLoaded && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-[#eae4d3]">
-                        <div className="w-10 h-10 border-4 border-[#4a5942]/20 border-t-[#4a5942] rounded-full animate-spin" />
-                      </div>
-                    )}
-                    <img 
-                      src={currentQuestion.image}
-                      alt="Challenge"
-                      onLoad={() => setImgLoaded(true)}
-                      onError={(e) => {
-                        setImgLoaded(true);
-                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?auto=format&fit=crop&w=800&q=80';
-                      }}
-                      className={`w-full h-full object-cover transition-all duration-1000 ${imgLoaded ? 'opacity-100' : 'opacity-0'}
-                        ${currentQuestion.type === 'zoom-guess' && !selectedOption ? 'scale-[2.5] grayscale-[0.2]' : 'scale-100 grayscale-0'}
-                        ${currentQuestion.type === 'blur-guess' && !selectedOption ? 'blur-2xl' : 'blur-0'}
-                        ${currentQuestion.type === 'silhouette-guess' && !selectedOption ? 'brightness-0' : 'brightness-100'}
-                      `}
-                    />
-                    {!selectedOption && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                        <span className="text-white text-[10px] font-bold tracking-[0.3em] uppercase bg-[#3E352B]/80 px-4 py-2 pointer-events-none">
-                          {currentQuestion.type === 'zoom-guess' && 'Fokus: Tekstur'}
-                          {currentQuestion.type === 'blur-guess' && 'Misi: Fokus'}
-                          {currentQuestion.type === 'silhouette-guess' && 'Misi: Siluet'}
-                          {currentQuestion.type === 'image-guess' && 'Misi: Identifikasi'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {currentQuestion.options.map((option, idx) => {
+                    let btnClass = "border-[#d6cebc] text-[#3E352B] hover:bg-[#eae4d3]";
+                    if (selectedOption === option) {
+                      btnClass = isCorrect ? "bg-[#4a5942] border-[#4a5942] text-white" : "bg-[#c43a3a] border-[#c43a3a] text-white";
+                    } else if (selectedOption && option === currentQuestion.correctAnswer) {
+                      btnClass = "bg-[#4a5942]/20 border-[#4a5942] text-[#4a5942]";
+                    }
 
-                  <div className="space-y-3">
-                    {currentQuestion.options.map((option, idx) => {
-                      let btnClass = "border-[#d6cebc] text-[#3E352B] hover:bg-[#eae4d3]";
-                      if (selectedOption === option) {
-                        btnClass = isCorrect ? "bg-[#4a5942] border-[#4a5942] text-white" : "bg-[#c43a3a] border-[#c43a3a] text-white";
-                      } else if (selectedOption && option === currentQuestion.correctAnswer) {
-                        btnClass = "bg-[#4a5942]/20 border-[#4a5942] text-[#4a5942]";
-                      }
-
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => handleOptionClick(option)}
-                          disabled={!!selectedOption}
-                          className={`w-full p-5 text-left border flex items-center justify-between transition-all duration-300 ${btnClass} ${selectedOption ? 'cursor-default' : 'hover:translate-x-2'}`}
-                        >
-                          <span className="font-medium text-sm md:text-base">{option}</span>
-                          {selectedOption === option && (
-                            isCorrect ? <Check size={20} /> : <X size={20} />
-                          )}
-                        </button>
-                      );
-                    })}
-
-                    <div ref={feedbackRef} className={`mt-6 p-6 bg-[#f9f7f4] border-l-4 border-[#4a5942] shadow-sm opacity-0 ${showFact && selectedOption ? 'pointer-events-auto' : 'pointer-events-none'}`}>
-                      <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#4a5942] mb-2">Tahukah Kamu?</p>
-                      <p className="text-[#3E352B] text-sm leading-relaxed italic text-left">
-                        &quot;{currentQuestion.fact}&quot;
-                      </p>
-                      <button 
-                        onClick={nextQuestion}
-                        className="mt-6 w-full flex items-center justify-center gap-2 py-3 bg-[#3E352B] text-[#f9f7f4] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#4a5942] transition-colors"
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => handleOptionClick(option)}
+                        disabled={!!selectedOption}
+                        className={`w-full p-6 text-left border-2 flex items-center justify-between transition-all duration-300 rounded-lg ${btnClass} ${selectedOption ? 'cursor-default' : 'hover:-translate-y-1 hover:shadow-md'}`}
                       >
-                        {currentQuestionIndex < filteredQuestions.length - 1 ? 'Soal Berikutnya' : 'Selesaikan Misi'}
-                        <ArrowRight size={14} />
+                        <span className="font-medium text-base md:text-lg">{option}</span>
+                        {selectedOption === option && (
+                          isCorrect ? <Check size={24} /> : <X size={24} />
+                        )}
                       </button>
-                    </div>
-                  </div>
+                    );
+                  })}
+                </div>
+
+                <div ref={feedbackRef} className={`mt-8 p-6 bg-[#f9f7f4] border-l-4 border-[#4a5942] shadow-sm opacity-0 ${showFact && selectedOption ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+                  <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#4a5942] mb-2">Tahukah Kamu?</p>
+                  <p className="text-[#3E352B] text-sm md:text-base leading-relaxed italic text-left">
+                    "{currentQuestion.fact}"
+                  </p>
+                  <button 
+                    onClick={nextQuestion}
+                    className="mt-6 w-full flex items-center justify-center gap-2 py-4 bg-[#3E352B] text-[#f9f7f4] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#4a5942] transition-colors rounded"
+                  >
+                    {currentQuestionIndex < filteredQuestions.length - 1 ? 'Soal Berikutnya' : 'Selesaikan Misi'}
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
               </div>
             </div>
@@ -521,7 +418,7 @@ export default function ZoologyQuiz() {
 
                       <p className="text-[17px] text-[#5a574f] max-w-xl mx-auto leading-relaxed mb-12">
                         Atas keberhasilannya menyelesaikan <strong className="text-[#3E352B]">Misi Penjelajah Museum</strong> 
-                        dengan predikat keahlian: <br/> <strong className="text-[#4a5942] text-2xl block mt-4 font-[--font-playfair] italic">&quot;{getRank().title}&quot;</strong>
+                        dengan predikat keahlian: <br/> <strong className="text-[#4a5942] text-2xl block mt-4 font-[--font-playfair] italic">"{getRank().title}"</strong>
                       </p>
 
                       <div className="flex w-full justify-between items-end px-12 mt-4 text-[10px] font-bold tracking-[0.2em] uppercase text-[#3E352B]">
@@ -554,7 +451,7 @@ export default function ZoologyQuiz() {
                     {isGenerating ? 'Menyimpan File...' : 'Unduh Gambar (PNG)'}
                   </button>
                   <button 
-                    onClick={() => { setPlayerName(''); setGameState('types'); }}
+                    onClick={() => { setPlayerName(''); setGameState('chapters'); }}
                     className="flex items-center gap-3 px-8 py-4 border border-[#3E352B] text-[#3E352B] text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#3E352B] hover:text-[#f9f7f4] transition-all"
                   >
                     <RefreshCcw size={16} /> Mulai Misi Baru
