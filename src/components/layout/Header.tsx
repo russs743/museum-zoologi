@@ -29,10 +29,12 @@ export default function Header() {
   const textColor = isDarkRoute ? "text-[#f2eee3]" : "text-[#3E352B]";
   const borderColor = isDarkRoute ? "border-[#f2eee3]/10" : "border-[#3E352B]/10";
 
+  const isTourRoute = pathname.startsWith('/tour');
+
   return (
     <>
       <nav className={`absolute top-0 left-0 w-full flex items-center justify-between px-6 md:px-16 py-6 z-100 bg-transparent transition-colors duration-500 border-b ${borderColor} ${textColor}`}>
-        <Link href="/" className="text-xl md:text-[1.35rem] font-(family-name:--font-playfair) tracking-tight">
+        <Link href="/" className={`text-xl md:text-[1.35rem] font-(family-name:--font-playfair) tracking-tight ${isTourRoute ? 'invisible' : ''}`}>
           Museum <span className={isDarkRoute ? "text-[#7dbc8b]" : "text-[#485942]"}>Zoologi</span> Bogor
         </Link>
         

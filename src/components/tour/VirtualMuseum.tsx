@@ -16,26 +16,12 @@ import { gsap } from 'gsap';
 //   [0, -2, -10] = forward   [0, -2, 10]  = behind
 //   Diagonals combine axes, e.g. [8, -2, 8] = right-behind
 const MUSEUM_ROOMS = {
-  lobby: {
-    id: 'lobby',
-    name: 'Pintu Masuk Utama',
-    image: '/7019366781_cb7818eb68_o.jpg',
-    fallbackColor: '#5a4f42',
-    hotspots: [
-      { id: 'h-lobby-1', target: 'mamalia',  position: [0, -2, -10], label: 'Ruang Mamalia' },
-      { id: 'h-lobby-2', target: 'burung1',  position: [-10, -2, 0], label: 'Ruang Burung I' },
-    ],
-    infos: [
-      { id: 'i-lobby', position: [-5, 2, -10], title: 'Selamat Datang', text: 'Jelajahi keajaiban Zoologi Indonesia dari sini. Gunakan panah navigasi untuk berpindah ruangan.' }
-    ]
-  },
   burung1: {
     id: 'burung1',
     name: 'Ruang Burung I',
-    image: '/54151288982_094a2b9922_c.jpg',
+    image: '/PANO_20251124_121533.jpg',
     fallbackColor: '#3a5245',
     hotspots: [
-      { id: 'h-b1-1', target: 'lobby',   position: [10, -2, 0],  label: 'Pintu Masuk' },
       { id: 'h-b1-2', target: 'burung2', position: [0, -2, -10], label: 'Ruang Burung II' },
     ],
     infos: [
@@ -61,7 +47,6 @@ const MUSEUM_ROOMS = {
     image: '/PANO_20251124_121647.jpg',
     fallbackColor: '#3d5a32',
     hotspots: [
-      { id: 'h-m-1', target: 'lobby',     position: [0, -2, 10],   label: 'Pintu Masuk' },
       { id: 'h-m-2', target: 'burung2',   position: [-10, -2, 0],  label: 'Ruang Burung II' },
       { id: 'h-m-3', target: 'reptil',    position: [10, -2, 0],   label: 'Reptil & Amfibi' },
     ],
@@ -90,7 +75,6 @@ const MUSEUM_ROOMS = {
     hotspots: [
       { id: 'h-s2-1', target: 'serangga1', position: [-10, -2, 0], label: 'Serangga I' },
       { id: 'h-s2-2', target: 'reptil',    position: [0, -2, 10],  label: 'Reptil & Amfibi' },
-      { id: 'h-s2-3', target: 'ikan',      position: [10, -2, 0],  label: 'Ikan & Moluska' },
     ],
     infos: [
       { id: 'i-s2', position: [-5, 1, -8], title: 'Kupu-kupu Raja', text: 'Kupu-kupu bersayap emas yang dilindungi undang-undang — koleksi lepidoptera terlengkap di Asia Tenggara.' }
@@ -103,39 +87,14 @@ const MUSEUM_ROOMS = {
     fallbackColor: '#4a4a32',
     hotspots: [
       { id: 'h-r-1', target: 'mamalia',  position: [-10, -2, 0], label: 'Ruang Mamalia' },
-      { id: 'h-r-2', target: 'paus',     position: [0, -2, 10],  label: 'Ruang Paus' },
       { id: 'h-r-3', target: 'serangga2', position: [0, -2, -10], label: 'Serangga II' },
     ],
     infos: [
       { id: 'i-r', position: [6, 1, 6], title: 'Komodo', text: 'Kadal terbesar di dunia — mampu mendeteksi bau mangsa dari jarak 10 km dengan lidah bercabangnya.' }
     ]
   },
-  paus: {
-    id: 'paus',
-    name: 'Ruang Paus',
-    image: 'https://placehold.co/2400x1200/2e4a5a/FFFFFF/png?text=Ruang+Paus',
-    fallbackColor: '#2e4a5a',
-    hotspots: [
-      { id: 'h-p-1', target: 'mamalia', position: [-10, -2, 0], label: 'Ruang Mamalia' },
-      { id: 'h-p-2', target: 'reptil',  position: [0, -2, -10], label: 'Reptil & Amfibi' },
-    ],
-    infos: [
-      { id: 'i-p', position: [5, 1, 8], title: 'Kerangka Paus Biru', text: 'Makhluk terbesar yang pernah hidup di Bumi — panjang 33 meter, berat 190 ton. Ikon utama Museum Zoologi Bogor.' }
-    ]
-  },
-  ikan: {
-    id: 'ikan',
-    name: 'Ikan & Moluska',
-    image: 'https://placehold.co/2400x1200/2e4a5a/FFFFFF/png?text=Ikan+Dan+Moluska',
-    fallbackColor: '#2e4a5a',
-    hotspots: [
-      { id: 'h-i-1', target: 'serangga2', position: [-10, -2, 0], label: 'Serangga II' },
-      { id: 'h-i-2', target: 'reptil',    position: [0, -2, 10],  label: 'Reptil & Amfibi' },
-    ],
-    infos: [
-      { id: 'i-i', position: [6, 1, -6], title: 'Coelacanth', text: 'Fosil hidup berusia 400 juta tahun yang ditemukan di perairan Manado — salah satu koleksi paling berharga di MZB.' }
-    ]
-  },
+
+
 };
 
 // --- ERROR BOUNDARY ---
@@ -179,7 +138,7 @@ function RoomSphereMap({ imageUrl }: { imageUrl: string }) {
 // --- COMPONENTS ---
 
 function Scene({ currentRoomId, onNavigate }: { currentRoomId: keyof typeof MUSEUM_ROOMS, onNavigate: (id: string) => void }) {
-  const room = MUSEUM_ROOMS[currentRoomId];
+  const room = MUSEUM_ROOMS[currentRoomId] || MUSEUM_ROOMS['burung1'];
 
   return (
     <>
@@ -261,8 +220,9 @@ function InfoPoint({ position, title, text }: { position: [number, number, numbe
 }
 
 export default function VirtualMuseum() {
-  const [currentRoomId, setCurrentRoomId] = useState<keyof typeof MUSEUM_ROOMS>('lobby');
+  const [currentRoomId, setCurrentRoomId] = useState<keyof typeof MUSEUM_ROOMS>('burung1');
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMinimapOpen, setIsMinimapOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const handleNavigate = (targetId: string) => {
@@ -317,19 +277,27 @@ export default function VirtualMuseum() {
             <div className="flex flex-col">
                <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-[#c4843a] mb-2">Virtual Museum</span>
                <h1 className="font-[--font-playfair] text-3xl md:text-5xl text-white">
-                  {MUSEUM_ROOMS[currentRoomId].name}
+                  {(MUSEUM_ROOMS[currentRoomId] || MUSEUM_ROOMS['burung1']).name}
                </h1>
             </div>
          </div>
 
          {/* Mini Map — synced with InteractiveMap denah layout */}
-         <div className="pointer-events-auto hidden md:block">
-            <div className="bg-[#f9f7f4] p-5 border border-[#d6cebc] shadow-2xl w-56">
-               <div className="flex items-center gap-2 mb-3 border-b border-[#d6cebc] pb-2">
-                  <MapIcon size={14} className="text-[#4a5942]" />
-                  <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#3E352B]">Denah Lantai</span>
-               </div>
-               <div className="relative w-full" style={{ paddingBottom: '88%' }}>
+         <div className="pointer-events-auto origin-top-right scale-75 sm:scale-90 md:scale-100 mt-12 md:mt-0 flex flex-col items-end">
+            <button 
+              onClick={() => setIsMinimapOpen(!isMinimapOpen)}
+              className="mb-2 bg-black/50 hover:bg-black/70 text-white backdrop-blur-sm border border-white/20 px-3 py-2 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2 transition-colors rounded-sm shadow-lg"
+            >
+              <MapIcon size={14} /> {isMinimapOpen ? 'Tutup Denah' : 'Buka Denah'}
+            </button>
+            
+            {isMinimapOpen && (
+              <div className="bg-[#f9f7f4] p-5 border border-[#d6cebc] shadow-2xl w-56 animate-in fade-in slide-in-from-top-2 duration-300">
+                 <div className="flex items-center gap-2 mb-3 border-b border-[#d6cebc] pb-2">
+                    <MapIcon size={14} className="text-[#4a5942]" />
+                    <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#3E352B]">Denah Lantai</span>
+                 </div>
+                 <div className="relative w-full" style={{ paddingBottom: '88%' }}>
                   {/* Room mapping: tour room IDs → denah room IDs */}
                   {[
                     { id: 'burung2',       tourId: 'burung2',    label: 'B2',  style: { left: '4%', top: '5%', width: '32%', height: '25%' } },
@@ -338,9 +306,9 @@ export default function VirtualMuseum() {
                     { id: 'serangga1',     tourId: 'serangga1',  label: 'S1',  style: { left: '58%', top: '5%', width: '10%', height: '15%' } },
                     { id: 'serangga2',     tourId: 'serangga2',  label: 'S2',  style: { left: '70%', top: '5%', width: '12%', height: '15%' } },
                     { id: 'reptil',        tourId: 'reptil',     label: 'R',   style: { left: '58%', top: '22%', width: '24%', height: '25%' } },
-                    { id: 'paus',          tourId: 'paus',       label: 'P',   style: { left: '58%', top: '49%', width: '10%', height: '22%' } },
-                    { id: 'ikan',          tourId: 'ikan',       label: 'I',   style: { left: '84%', top: '5%', width: '12%', height: '42%' } },
-                    { id: 'pintu',         tourId: 'lobby',      label: '↑',   style: { left: '32%', top: '32%', width: '4%', height: '56%' } },
+                    { id: 'paus',          tourId: null,         label: 'P',   style: { left: '58%', top: '49%', width: '10%', height: '22%' } },
+                    { id: 'ikan',          tourId: null,         label: 'I',   style: { left: '84%', top: '5%', width: '12%', height: '42%' } },
+                    { id: 'pintu',         tourId: null,         label: '↑',   style: { left: '32%', top: '32%', width: '4%', height: '56%' } },
                     { id: 'temporer',      tourId: null,         label: '',    style: { left: '4%', top: '73%', width: '26%', height: '15%' } },
                     { id: 'petugas',       tourId: null,         label: '',    style: { left: '38%', top: '73%', width: '18%', height: '15%' } },
                     { id: 'pengembangan',  tourId: null,         label: '',    style: { left: '70%', top: '49%', width: '26%', height: '22%' } },
@@ -351,11 +319,16 @@ export default function VirtualMuseum() {
                     return (
                       <div
                         key={room.id}
-                        className={`absolute border flex items-center justify-center text-[6px] font-bold uppercase transition-all duration-300
+                        onClick={() => {
+                          if (isTourable && !isActive) {
+                            handleNavigate(room.tourId!);
+                          }
+                        }}
+                        className={`absolute border flex items-center justify-center text-[6px] font-bold uppercase transition-all duration-300 ${isTourable && !isActive ? 'cursor-pointer hover:scale-[1.02] hover:shadow-md z-10' : ''}
                           ${isActive
                             ? 'bg-[#4a5942] text-white border-[#4a5942]'
                             : isTourable
-                              ? 'bg-white/70 text-[#6b675d] border-[#d6cebc]'
+                              ? 'bg-white/70 text-[#6b675d] border-[#d6cebc] hover:bg-white'
                               : 'bg-[#d4cdbf]/60 text-[#a8a192] border-[#d6cebc]/50'
                           }`}
                         style={room.style}
@@ -371,6 +344,7 @@ export default function VirtualMuseum() {
                   <div className="flex items-center gap-1"><div className="w-2 h-2 bg-white/70 border border-[#d6cebc]" />Bisa dikunjungi</div>
                </div>
             </div>
+            )}
          </div>
       </div>
 

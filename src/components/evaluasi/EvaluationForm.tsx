@@ -22,7 +22,7 @@ export default function EvaluationForm() {
 
   const StarRating = ({ name, category, label }: { name: string, category: string, label: string }) => (
     <div className="mb-6">
-      <label className="block text-[#3E352B] font-medium mb-3">{label}</label>
+      <label className="block text-[#3E352B] font-medium mb-3">{label} <span className="text-red-500">*</span></label>
       <div className="flex gap-2">
         {[1, 2, 3, 4, 5].map((star) => (
           <button
@@ -106,7 +106,18 @@ export default function EvaluationForm() {
 
       <div className="space-y-8 mb-12">
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">Berapa usia Anda saat ini?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">Nama Anda <span className="text-red-500">*</span></label>
+          <input 
+            type="text" 
+            name="Nama" 
+            required
+            placeholder="Masukkan nama Anda" 
+            className="w-full p-4 bg-[#f9f7f4] border border-[#d6cebc] text-[#3E352B] focus:border-[#4a5942] outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="block text-[#3E352B] font-medium mb-3">Berapa usia Anda saat ini? <span className="text-red-500">*</span></label>
           <select name="Usia" required className="w-full p-4 bg-[#f9f7f4] border border-[#d6cebc] text-[#3E352B] focus:border-[#4a5942] outline-none">
             <option value="">Pilih rentang usia...</option>
             <option value="<12 tahun">&lt; 12 tahun</option>
@@ -118,7 +129,7 @@ export default function EvaluationForm() {
         </div>
 
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">Apakah ini pertama kalinya Anda mengunjungi Museum Zoologi Bogor?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">Apakah Anda pernah ke Museum Zoologi? <span className="text-red-500">*</span></label>
           <div className="flex gap-6">
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="radio" name="Kunjungan Pertama" value="Ya" required className="accent-[#4a5942] w-5 h-5" />
@@ -141,29 +152,29 @@ export default function EvaluationForm() {
         <StarRating 
           name="Kemudahan Penggunaan" 
           category="kemudahan" 
-          label="Seberapa mudah website ini diakses dan digunakan dari HP Anda saat sedang berkeliling museum?" 
+          label="Seberapa mudah prototype website ini diakses dan digunakan dari HP Anda?" 
         />
         <StarRating 
           name="Tampilan Visual" 
           category="visual" 
-          label="Apakah tampilan visual (teks, warna, gambar) cukup jelas untuk dibaca di dalam ruangan museum?" 
+          label="Apakah tampilan visual (teks, warna, gambar) dari prototype ini cukup jelas untuk dibaca?" 
         />
       </div>
 
       <div className="mb-12 border-b border-[#d6cebc] pb-8 pt-8">
         <h2 className="font-[--font-playfair] text-2xl text-[#3E352B] mb-2">Bagian 3: Evaluasi Fitur</h2>
-        <p className="text-[#8b877d] text-sm">Seberapa efektif fitur yang ada membantu kunjungan Anda.</p>
+        <p className="text-[#8b877d] text-sm">Seberapa efektif fitur yang ada untuk membantu kunjungan pengguna.</p>
       </div>
 
       <div className="space-y-8 mb-12">
         <StarRating 
           name="Efektivitas Galeri Satwa" 
           category="galeri" 
-          label="FITUR GALERI SATWA: Seberapa efektif informasi/katalog satwa membantu Anda memahami spesimen yang sedang dilihat?" 
+          label="FITUR GALERI SATWA: Seberapa efektif informasi/katalog satwa berpotensi membantu pengunjung memahami spesimen?" 
         />
 
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">FITUR KUIS: Apakah "Misi Zoologi" membuat kunjungan Anda menjadi lebih interaktif dan menyenangkan?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">FITUR KUIS: Apakah "Misi Zoologi" berpotensi membuat kunjungan menjadi lebih interaktif dan menyenangkan? <span className="text-red-500">*</span></label>
           <div className="space-y-3">
             {['Sangat Menyenangkan', 'Cukup Menyenangkan', 'Biasa Saja', 'Tidak Membantu'].map((opt) => (
               <label key={opt} className="flex items-center gap-3 cursor-pointer p-4 border border-[#d6cebc] hover:bg-[#f9f7f4] transition-colors">
@@ -175,7 +186,7 @@ export default function EvaluationForm() {
         </div>
 
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">Apakah menggunakan website ini sambil melihat pameran membuat Anda mengamati spesimen lebih lama/detail?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">Apakah Anda merasa website ini dapat membantu pengunjung mengamati spesimen lebih lama/detail jika digunakan di museum nanti? <span className="text-red-500">*</span></label>
           <select name="Dampak Pengamatan" required className="w-full p-4 bg-[#f9f7f4] border border-[#d6cebc] text-[#3E352B] focus:border-[#4a5942] outline-none">
             <option value="">Pilih jawaban...</option>
             <option value="Ya, jauh lebih lama">Ya, jauh lebih lama</option>
@@ -193,7 +204,7 @@ export default function EvaluationForm() {
 
       <div className="space-y-8 mb-12">
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">Dari skala 1-10, seberapa besar kemungkinan Anda merekomendasikan pengunjung lain untuk memakai website ini?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">Dari skala 1-10, seberapa besar kemungkinan Anda merekomendasikan orang lain untuk mencoba prototype website ini? <span className="text-red-500">*</span></label>
           <div className="flex justify-between items-center bg-[#f9f7f4] p-4 border border-[#d6cebc]">
             <span className="text-xs text-[#8b877d] font-bold uppercase w-16">Tidak Mungkin</span>
             <div className="flex gap-1 md:gap-2 flex-1 justify-center overflow-x-auto">
@@ -211,7 +222,7 @@ export default function EvaluationForm() {
         </div>
 
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">Fitur apa yang paling Anda sukai dari aplikasi ini?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">Fitur apa yang paling Anda sukai dari aplikasi ini? <span className="text-red-500">*</span></label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {['Galeri Satwa', 'Kuis & Sertifikat', 'Tampilan Antarmuka', 'Informasi Detail/Fakta Unik'].map((opt) => (
               <label key={opt} className="flex items-center gap-3 cursor-pointer p-4 border border-[#d6cebc] hover:bg-[#f9f7f4] transition-colors">
@@ -233,11 +244,36 @@ export default function EvaluationForm() {
         </div>
 
         <div>
-          <label className="block text-[#3E352B] font-medium mb-3">Apa saran atau masukan Anda untuk membuat website ini menjadi lebih baik?</label>
+          <label className="block text-[#3E352B] font-medium mb-3">Apa saran atau masukan Anda untuk membuat website ini menjadi lebih baik? <span className="text-red-500">*</span></label>
           <textarea 
             name="Saran" 
             rows={4} 
             placeholder="Tulis saran Anda di sini..." 
+            required
+            className="w-full p-4 bg-[#f9f7f4] border border-[#d6cebc] text-[#3E352B] focus:border-[#4a5942] outline-none resize-y"
+          ></textarea>
+        </div>
+
+        <div>
+          <label className="block text-[#3E352B] font-medium mb-3">Apakah ide ini bagus untuk diaplikasikan secara riil jika disempurnakan? <span className="text-red-500">*</span></label>
+          <div className="flex gap-6">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="Ide Aplikasi Riil" value="Ya" required className="accent-[#4a5942] w-5 h-5" />
+              <span className="text-[#5a574f]">Ya</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="Ide Aplikasi Riil" value="Tidak" required className="accent-[#4a5942] w-5 h-5" />
+              <span className="text-[#5a574f]">Tidak</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-[#3E352B] font-medium mb-3">Apa alasan Anda memilih jawaban di atas? <span className="text-red-500">*</span></label>
+          <textarea 
+            name="Alasan Ide Aplikasi Riil" 
+            rows={3} 
+            placeholder="Tulis alasan Anda di sini..." 
             required
             className="w-full p-4 bg-[#f9f7f4] border border-[#d6cebc] text-[#3E352B] focus:border-[#4a5942] outline-none resize-y"
           ></textarea>
