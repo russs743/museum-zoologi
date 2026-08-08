@@ -1,0 +1,957 @@
+# Diagram PlantUML — Museum Zoologi Bogor (Edutourism)
+
+Seluruh diagram dibuat berdasarkan analisis menyeluruh source code project Next.js.
+
+---
+
+## 1. USE CASE DIAGRAM
+
+```plantuml
+@startuml
+left to right direction
+
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam ArrowColor #4a5942
+skinparam ActorBorderColor #3E352B
+skinparam UsecaseBorderColor #3E352B
+skinparam UsecaseBackgroundColor #f9f7f4
+
+actor "Pengunjung" as User
+
+rectangle "Website Edutourism Museum Zoologi Bogor" {
+
+  package "Beranda" {
+    usecase "Melihat Beranda" as UC_Home
+    usecase "Melihat Welcome Modal" as UC_Modal
+    usecase "Melihat Fitur Tersedia" as UC_Features
+  }
+
+  package "Galeri Satwa" {
+    usecase "Melihat Daftar Kategori Galeri" as UC_GaleriList
+    usecase "Melihat Galeri per Kategori" as UC_GaleriCat
+    usecase "Mencari Spesies" as UC_Search
+    usecase "Melihat Detail Spesies" as UC_Detail
+  }
+
+  package "Denah Interaktif" {
+    usecase "Melihat Denah Museum" as UC_Denah
+    usecase "Memilih Ruangan di Denah" as UC_SelectRoom
+    usecase "Melihat Koleksi Satwa per Ruangan" as UC_RoomAnimals
+  }
+
+  package "Kuis (Misi Zoologi)" {
+    usecase "Melihat Halaman Kuis" as UC_KuisHome
+    usecase "Memilih Kategori Kuis" as UC_KuisCat
+    usecase "Mengerjakan Soal Kuis" as UC_KuisPlay
+    usecase "Melihat Feedback Jawaban" as UC_KuisFeedback
+    usecase "Melihat Hasil Kuis" as UC_KuisResult
+    usecase "Mengisi Nama untuk Sertifikat" as UC_KuisName
+    usecase "Mengunduh Sertifikat (PNG)" as UC_KuisCert
+  }
+
+  package "Virtual Tour (360 derajat)" {
+    usecase "Membuka Virtual Tour" as UC_TourOpen
+    usecase "Melihat Panorama 360 Ruangan" as UC_TourView
+    usecase "Berpindah Antar Ruangan" as UC_TourNav
+    usecase "Membaca Info Point Ruangan" as UC_TourInfo
+    usecase "Membuka Mini Map Denah" as UC_TourMap
+    usecase "Navigasi via Mini Map" as UC_TourMapNav
+    usecase "Keluar Tour" as UC_TourExit
+  }
+
+  package "Evaluasi (Survei)" {
+    usecase "Membuka Form Evaluasi" as UC_EvalOpen
+    usecase "Mengisi Profil Pengunjung" as UC_EvalProfil
+    usecase "Memberikan Rating Bintang" as UC_EvalRating
+    usecase "Menjawab Pertanyaan Survei" as UC_EvalAnswer
+    usecase "Mengirim Evaluasi ke Formspree" as UC_EvalSubmit
+    usecase "Melihat Konfirmasi Berhasil" as UC_EvalSuccess
+  }
+
+  package "Navigasi Global" {
+    usecase "Menggunakan Header Navigasi" as UC_Header
+    usecase "Membuka Menu Mobile" as UC_MobileMenu
+  }
+}
+
+' === Relasi User ke Use Case ===
+User --> UC_Home
+User --> UC_Modal
+User --> UC_Header
+User --> UC_MobileMenu
+
+User --> UC_GaleriList
+User --> UC_GaleriCat
+User --> UC_Search
+User --> UC_Detail
+
+User --> UC_Denah
+User --> UC_SelectRoom
+
+User --> UC_KuisHome
+User --> UC_KuisCat
+User --> UC_KuisPlay
+
+User --> UC_TourOpen
+User --> UC_TourView
+User --> UC_TourNav
+
+User --> UC_EvalOpen
+User --> UC_EvalProfil
+User --> UC_EvalRating
+User --> UC_EvalAnswer
+
+' === Include Relations ===
+UC_Home ..> UC_Modal : <<include>>
+UC_Home ..> UC_Features : <<include>>
+
+UC_GaleriCat ..> UC_Search : <<include>>
+UC_GaleriCat ..> UC_Detail : <<include>>
+
+UC_SelectRoom ..> UC_RoomAnimals : <<include>>
+UC_RoomAnimals ..> UC_Detail : <<include>>
+
+UC_KuisHome ..> UC_KuisCat : <<include>>
+UC_KuisCat ..> UC_KuisPlay : <<include>>
+UC_KuisPlay ..> UC_KuisFeedback : <<include>>
+UC_KuisPlay ..> UC_KuisResult : <<include>>
+UC_KuisResult ..> UC_KuisName : <<include>>
+UC_KuisName ..> UC_KuisCert : <<include>>
+
+UC_TourOpen ..> UC_TourView : <<include>>
+UC_TourView ..> UC_TourNav : <<include>>
+UC_TourView ..> UC_TourInfo : <<include>>
+UC_TourView ..> UC_TourMap : <<include>>
+UC_TourMap ..> UC_TourMapNav : <<include>>
+UC_TourNav ..> UC_TourExit : <<extend>>
+
+UC_EvalOpen ..> UC_EvalProfil : <<include>>
+UC_EvalOpen ..> UC_EvalRating : <<include>>
+UC_EvalOpen ..> UC_EvalAnswer : <<include>>
+UC_EvalAnswer ..> UC_EvalSubmit : <<include>>
+UC_EvalSubmit ..> UC_EvalSuccess : <<include>>
+
+@enduml
+```
+
+---
+
+## 2. ACTIVITY DIAGRAM
+
+### 2a. Alur Utama Pengguna
+
+```plantuml
+@startuml
+skinparam ActivityBackgroundColor #f9f7f4
+skinparam ActivityBorderColor #3E352B
+skinparam ArrowColor #4a5942
+skinparam ActivityStartColor #4a5942
+skinparam ActivityEndColor #3E352B
+
+start
+
+:Browser membuka website;
+:WelcomeModal ditampilkan (sessionStorage belum ada);
+
+if (Pengguna klik "Mengerti & Mulai Menjelajah"?) then (Ya)
+  :sessionStorage 'hasSeenWelcomeModal' = true;
+  :Modal ditutup;
+else (Tidak)
+  :WelcomeModal tetap tampil;
+  stop
+end if
+
+:Halaman Beranda ditampilkan;
+:FeaturesSection menampilkan 4 kartu fitur\n(Galeri, Denah, Kuis, Virtual Tour);
+
+:Pengguna memilih fitur;
+
+fork
+  :Galeri Satwa;
+  :Halaman /galeri ditampilkan\n(GSAP animate header & cards);
+  :Pengguna memilih kategori\n(Mamalia / Burung / Reptil / Ikan / Invertebrata);
+  :Halaman /galeri/[category] ditampilkan;
+  :Filter data dari animalsData.ts;
+  if (Pengguna mencari spesies?) then (Ya)
+    :Input pencarian diproses;
+    :filteredAnimals diperbarui secara real-time;
+  end if
+  :Pengguna klik AnimalCard;
+  :Redirect ke /species/[id];
+  :SpeciesDetailPage ditampilkan\n(Nama, Foto, Nama Latin, Status Konservasi,\nDeskripsi, Habitat, Foto Museum, Fakta Unik, Lokasi Ruangan);
+fork again
+  :Denah Interaktif;
+  :Halaman /denah ditampilkan;
+  :InteractiveMap merender peta museum;
+  :Pengguna klik ruangan pameran;
+  :getAnimalsByRoom dipanggil;
+  :Sidebar menampilkan daftar AnimalCard;
+  :Pengguna klik AnimalCard;
+  :Redirect ke /species/[id];
+fork again
+  :Kuis (Misi Zoologi);
+  :Halaman /kuis ditampilkan;
+  :ZoologyQuiz: state 'welcome' ditampilkan;
+  :Pengguna klik "Mulai Kuis";
+  :state 'chapters' ditampilkan\n(pilih kategori atau Seluruh Area);
+  :Pengguna memilih kategori;
+  :state 'playing' dimulai;
+  repeat
+    :Soal ditampilkan dengan 4 opsi jawaban;
+    :Pengguna klik salah satu opsi;
+    :Jawaban dievaluasi;
+    if (Benar?) then (Ya)
+      :Score + 1;
+      :Opsi berubah warna hijau;
+    else (Tidak)
+      :Opsi berubah warna merah;
+      :Jawaban benar ditandai;
+    end if
+    :Feedback "Tahukah Kamu?" ditampilkan (GSAP animate);
+    :Pengguna klik "Soal Berikutnya";
+  repeat while (masih ada soal?) is (Ya)
+  :state 'result' ditampilkan;
+  :Pengguna mengisi nama;
+  :Sertifikat digenerate;
+  :Pengguna mengunduh sertifikat PNG (html2canvas);
+fork again
+  :Virtual Tour;
+  :Halaman /tour ditampilkan;
+  :VirtualMuseum dirender (Three.js Canvas);
+  :Ruangan awal: Ruang Burung I;
+  :Panorama 360° PANO_20251124_121533.jpg dimuat;
+  repeat
+    :OrbitControls aktif (drag untuk melihat 360°);
+    if (Klik Hotspot navigasi?) then (Ya)
+      :GSAP fade-out overlay;
+      :currentRoomId berubah;
+      :Panorama baru dimuat;
+      :GSAP fade-in;
+    else if (Klik InfoPoint?) then (Ya)
+      :Panel info teks muncul;
+    else if (Buka Mini Map?) then (Ya)
+      :Mini map denah ditampilkan;
+      if (Klik ruangan navigable di mini map?) then (Ya)
+        :GSAP transition ke ruangan baru;
+      end if
+    end if
+  repeat while (Pengguna masih di Tour?) is (Ya)
+  :Pengguna klik "Keluar Tour";
+  :Redirect ke /;
+fork again
+  :Evaluasi;
+  :Halaman /evaluasi ditampilkan;
+  :EvaluationForm ditampilkan (4 bagian);
+  :Pengguna mengisi Profil Pengunjung;
+  :Pengguna memberi rating bintang (UX & Visual);
+  :Pengguna menjawab pertanyaan Fitur;
+  :Pengguna mengisi Kesimpulan & Saran;
+  :Pengguna klik "Kirim Evaluasi";
+  :Form data dikirim ke Formspree via HTTP POST;
+  if (Response OK?) then (Ya)
+    :Tampilan sukses "Terima Kasih!";
+  else (Tidak)
+    :Alert error ditampilkan;
+  end if
+end fork
+
+:Pengguna selesai menggunakan website;
+
+stop
+@enduml
+```
+
+---
+
+### 2b. Activity Diagram — Virtual Tour
+
+```plantuml
+@startuml
+skinparam ActivityBackgroundColor #f9f7f4
+skinparam ActivityBorderColor #3E352B
+skinparam ArrowColor #4a5942
+
+start
+
+:Pengguna membuka /tour;
+:TourPage merender VirtualMuseum;
+:Three.js Canvas diinisialisasi;
+:PerspectiveCamera (fov=75) dibuat;
+:OrbitControls diaktifkan\n(enableZoom=false, enablePan=false);
+:currentRoomId = 'burung1';
+
+:Suspense: Loading Overlay tampil;
+:RoomSphereMap memuat PANO_20251124_121533.jpg;
+:Texture dipasang ke SphereGeometry (BackSide);
+:Loading selesai;
+
+:Scene merender:\n- RoomSphereMap (panorama)\n- Hotspot(s)\n- InfoPoint(s);
+
+repeat
+  :Pengguna drag/tarik layar;
+  :OrbitControls rotasi kamera;
+
+  if (Pengguna klik Hotspot?) then (Ya)
+    :handleNavigate(targetId) dipanggil;
+    :GSAP: overlayRef opacity → 1 (0.5s);
+    :currentRoomId diperbarui;
+    :Panorama baru dimuat;
+    :GSAP: overlayRef opacity → 0 (0.8s, delay 0.3s);
+  else if (Pengguna klik InfoPoint?) then (Ya)
+    :open state toggle;
+    if (open = true?) then (Ya)
+      :Panel info teks tampil di sebelah tombol;
+    else (Tidak)
+      :Panel info disembunyikan;
+    end if
+  else if (Pengguna klik "Buka Denah"?) then (Ya)
+    :isMinimapOpen = true;
+    :Mini Map dirender (peta posisi relatif);
+    if (Pengguna klik ruangan tourId !== null?) then (Ya)
+      :handleNavigate(room.tourId) dipanggil;
+      :Transisi GSAP ke ruangan baru;
+    end if
+  end if
+
+repeat while (Pengguna klik "Keluar Tour"?) is (Tidak)
+
+:Link href="/" → redirect ke Beranda;
+
+stop
+@enduml
+```
+
+---
+
+### 2c. Activity Diagram — Kuis & Sertifikat
+
+```plantuml
+@startuml
+skinparam ActivityBackgroundColor #f9f7f4
+skinparam ActivityBorderColor #3E352B
+skinparam ArrowColor #4a5942
+
+start
+
+:Pengguna membuka /kuis;
+:ZoologyQuiz: gameState = 'welcome';
+:GSAP animasi elemen .content-anim (opacity, y);
+
+:Pengguna klik "Mulai Kuis";
+:gameState = 'chapters';
+:QUIZ_CATEGORIES ditampilkan + opsi "Seluruh Area";
+
+if (Pengguna pilih "Seluruh Area"?) then (Ya)
+  :selectedCategory = null;
+  :filteredQuestions = 10 soal acak dari semua kategori;
+else (Tidak, pilih kategori spesifik)
+  :selectedCategory = QuizCategory yang dipilih;
+  :filteredQuestions = soal dengan categoryId yang cocok;
+end if
+
+:gameState = 'playing';
+:currentQuestionIndex = 0, score = 0;
+
+repeat
+  :Soal ke-(currentQuestionIndex+1) ditampilkan;
+  :Progress bar diperbarui;
+  :4 opsi jawaban ditampilkan dalam grid;
+
+  :Pengguna memilih salah satu opsi;
+  :selectedOption diset;
+
+  if (opsi === correctAnswer?) then (Ya)
+    :isCorrect = true;
+    :score + 1;
+    :Opsi berubah hijau + ikon Check;
+  else (Tidak)
+    :isCorrect = false;
+    :Opsi yang dipilih merah + ikon X;
+    :correctAnswer ditampilkan dengan highlight hijau;
+  end if
+
+  :setTimeout 400ms;
+  :showFact = true;
+  :GSAP: feedbackRef animate (opacity, scale, y);
+  :Panel "Tahukah Kamu?" muncul dengan teks fact;
+
+  :Pengguna klik "Soal Berikutnya" / "Selesaikan Misi";
+  :showFact = false;
+  :GSAP: questionRef slide-out ke kiri;
+  :currentQuestionIndex + 1;
+  :GSAP: questionRef slide-in dari kanan;
+
+repeat while (currentQuestionIndex < filteredQuestions.length - 1) is (Ya)
+
+:gameState = 'result';
+:Tampilan "Misi Selesai!" dengan skor;
+
+:Pengguna mengisi nama di input form;
+:Form onSubmit → playerName diset;
+
+:Sertifikat dirender (div#certificateRef, 800x800px);
+:Sertifikat menampilkan:\n- Nama pemain\n- Skor (score/total)\n- Predikat (Legendary/Expert/Apprentice Scholar)\n- Tanggal terbit\n- Stempel MZB;
+
+:certScale dihitung berdasarkan window.innerWidth;
+
+if (Pengguna klik "Unduh Gambar (PNG)"?) then (Ya)
+  :html2canvas(certificateRef, scale=2);
+  :Canvas dikonversi ke dataURL PNG;
+  :File diunduh dengan nama Sertifikat-MZB-[nama].png;
+end if
+
+if (Pengguna klik "Mulai Misi Baru"?) then (Ya)
+  :playerName = '';
+  :gameState = 'chapters';
+end if
+
+stop
+@enduml
+```
+
+---
+
+## 3. SEQUENCE DIAGRAM
+
+### 3a. Sequence — Melihat Detail Satwa
+
+```plantuml
+@startuml
+skinparam SequenceArrowColor #4a5942
+skinparam SequenceParticipantBackgroundColor #f9f7f4
+skinparam SequenceParticipantBorderColor #3E352B
+skinparam SequenceLifeLineBorderColor #d6cebc
+
+actor "Pengunjung" as User
+participant "Browser\n(Next.js Client)" as Browser
+participant "Next.js App Router" as Router
+participant "animalsData.ts\n(Static Data)" as Data
+
+User -> Browser : Klik AnimalCard\n(/species/[id])
+Browser -> Router : HTTP GET /species/[id]
+Router -> Data : getAnimalById(id)
+Data --> Router : AnimalData object\n(name, scientificName, category,\nroom, image, museumImage,\nconservationStatus, habitat,\nfunFact, description)
+Router --> Browser : Render SpeciesDetailPage
+
+note over Browser
+  Halaman menampilkan:
+  - Hero image (background div)
+  - Nama & nama ilmiah
+  - Status konservasi (badge warna)
+  - Deskripsi Spesies
+  - Habitat Alami
+  - Foto Koleksi Museum (museumImage)
+  - Fakta Unik
+  - Lokasi Pameran (roomLabels mapping)
+  - Link "Lihat di Denah"
+end note
+
+Browser --> User : SpeciesDetailPage tampil
+
+User -> Browser : Klik "Lihat di Denah"
+Browser -> Router : HTTP GET /denah
+Router --> Browser : Render DenahPage (InteractiveMap)
+Browser --> User : Halaman Denah tampil
+
+@enduml
+```
+
+---
+
+### 3b. Sequence — Virtual Tour
+
+```plantuml
+@startuml
+skinparam SequenceArrowColor #4a5942
+skinparam SequenceParticipantBackgroundColor #f9f7f4
+skinparam SequenceParticipantBorderColor #3E352B
+
+actor "Pengunjung" as User
+participant "Browser\n(Next.js Client)" as Browser
+participant "Next.js App Router" as Router
+participant "VirtualMuseum.tsx\n(React Component)" as VM
+participant "Three.js Canvas\n(@react-three/fiber)" as Canvas
+participant "GSAP\n(Animation)" as GSAP
+participant "Static Assets\n(/public/*.jpg)" as Assets
+
+User -> Browser : Membuka /tour
+Browser -> Router : HTTP GET /tour
+Router --> Browser : Render TourPage → VirtualMuseum
+
+Browser -> VM : Mount VirtualMuseum
+VM -> VM : useState: currentRoomId = 'burung1'
+VM -> Canvas : Render <Canvas>
+Canvas -> Canvas : PerspectiveCamera (fov=75)
+Canvas -> Canvas : OrbitControls (drag)
+Canvas -> Assets : Muat /PANO_20251124_121533.jpg\n(Ruang Burung I)
+Assets --> Canvas : Texture panorama
+Canvas -> Canvas : SphereGeometry BackSide\n(radius=50, segments=60x40)
+Canvas --> Browser : Panorama 360° tampil
+
+Browser --> User : Ruang Burung I tampil\n+ Hotspot "Ruang Burung II"\n+ InfoPoint "Koleksi Burung Nusantara"
+
+User -> Browser : Klik Hotspot "Ruang Burung II"
+Browser -> VM : onClick() → handleNavigate('burung2')
+VM -> GSAP : gsap.to(overlayRef, {opacity:1, duration:0.5})
+GSAP --> Browser : Layar fade ke hitam
+VM -> VM : setCurrentRoomId('burung2')
+Canvas -> Assets : Muat /Gemini_Generated_Image_n9rdbdn9rdbdn9rd.png
+Assets --> Canvas : Texture panorama baru
+VM -> GSAP : gsap.to(overlayRef, {opacity:0, duration:0.8, delay:0.3})
+GSAP --> Browser : Layar fade masuk
+Browser --> User : Ruang Burung II tampil\n+ Hotspot "Ruang Burung I"\n+ Hotspot "Ruang Mamalia"\n+ InfoPoint "Cendrawasih"
+
+User -> Browser : Klik InfoPoint
+Browser -> VM : onClick() → setOpen(true)
+VM --> Browser : Panel info teks tampil
+Browser --> User : Judul + teks informasi tampil
+
+User -> Browser : Klik "Buka Denah"
+Browser -> VM : setIsMinimapOpen(true)
+VM --> Browser : Mini Map merender peta posisi ruangan
+Browser --> User : Mini Map tampil\n(posisi aktif highlight hijau)
+
+User -> Browser : Klik "Keluar Tour" (Link href="/")
+Browser -> Router : HTTP GET /
+Router --> Browser : Render Landing (Beranda)
+Browser --> User : Halaman Beranda tampil
+
+@enduml
+```
+
+---
+
+### 3c. Sequence — Mengikuti Kuis
+
+```plantuml
+@startuml
+skinparam SequenceArrowColor #4a5942
+skinparam SequenceParticipantBackgroundColor #f9f7f4
+skinparam SequenceParticipantBorderColor #3E352B
+
+actor "Pengunjung" as User
+participant "Browser\n(Next.js Client)" as Browser
+participant "Next.js App Router" as Router
+participant "ZoologyQuiz.tsx\n(React Component)" as Quiz
+participant "quiz.ts\n(Static Data)" as Data
+participant "GSAP\n(Animation)" as GSAP
+participant "html2canvas\n(Library)" as H2C
+
+User -> Browser : Membuka /kuis
+Browser -> Router : HTTP GET /kuis
+Router --> Browser : Render QuizPage → ZoologyQuiz
+
+Browser -> Quiz : Mount ZoologyQuiz
+Quiz -> Quiz : gameState = 'welcome'
+Quiz -> GSAP : gsap.fromTo(.content-anim, opacity 0→1, y 30→0)
+Browser --> User : Welcome screen tampil
+
+User -> Browser : Klik "Mulai Kuis"
+Browser -> Quiz : goToChapters()
+Quiz -> Quiz : gameState = 'chapters'
+Quiz -> Data : Baca QUIZ_CATEGORIES[]
+Data --> Quiz : Array 5 kategori
+Browser --> User : Chapter selection tampil\n(Seluruh Area + 5 kategori)
+
+User -> Browser : Pilih kategori (mis: Mamalia)
+Browser -> Quiz : startChapter(category)
+Quiz -> Data : Filter ZOOLOGY_QUIZ_DATA\nby categoryId === 'mamalia'
+Data --> Quiz : Array soal terfilter
+Quiz -> Quiz : gameState = 'playing'\ncurrentQuestionIndex = 0, score = 0
+Browser --> User : Soal pertama tampil
+
+loop Setiap soal
+  User -> Browser : Klik salah satu opsi
+  Browser -> Quiz : handleOptionClick(option)
+  Quiz -> Quiz : Cek option === correctAnswer
+  alt Benar
+    Quiz -> Quiz : score + 1
+    Quiz -> Quiz : isCorrect = true
+  else Salah
+    Quiz -> Quiz : isCorrect = false
+  end
+  Quiz -> Quiz : setTimeout 400ms\nshowFact = true
+  Quiz -> GSAP : gsap.fromTo(feedbackRef,\nscale 0.8→1, y 20→0)
+  Browser --> User : Panel "Tahukah Kamu?" tampil
+  
+  User -> Browser : Klik "Soal Berikutnya"
+  Browser -> Quiz : nextQuestion()
+  Quiz -> GSAP : gsap.to(questionRef, {x:-50, opacity:0})
+  Quiz -> Quiz : currentQuestionIndex + 1
+  Quiz -> GSAP : gsap.fromTo(questionRef, {x:50}→{x:0})
+  Browser --> User : Soal berikutnya tampil
+end
+
+Quiz -> Quiz : gameState = 'result'
+Browser --> User : Layar "Misi Selesai!"\n+ form isi nama
+
+User -> Browser : Mengisi nama & submit
+Browser -> Quiz : setPlayerName(name)
+Quiz -> Quiz : Render Sertifikat (div 800x800px)\n+ Predikat berdasarkan score
+
+Browser --> User : Sertifikat ditampilkan
+
+User -> Browser : Klik "Unduh Gambar (PNG)"
+Browser -> Quiz : handleDownloadCertificate()
+Quiz -> Quiz : import('html2canvas') (dynamic)
+Quiz -> H2C : html2canvas(certificateRef, {scale:2})
+H2C --> Quiz : canvas element
+Quiz -> Browser : link.href = canvas.toDataURL('image/png')\nlink.click()
+Browser --> User : File PNG terunduh\n(Sertifikat-MZB-[nama].png)
+
+@enduml
+```
+
+---
+
+### 3d. Sequence — Mengirim Evaluasi
+
+```plantuml
+@startuml
+skinparam SequenceArrowColor #4a5942
+skinparam SequenceParticipantBackgroundColor #f9f7f4
+skinparam SequenceParticipantBorderColor #3E352B
+
+actor "Pengunjung" as User
+participant "Browser\n(Next.js Client)" as Browser
+participant "Next.js App Router" as Router
+participant "EvaluationForm.tsx\n(React Component)" as Form
+participant "Formspree API\n(External Service)" as Formspree
+
+User -> Browser : Membuka /evaluasi
+Browser -> Router : HTTP GET /evaluasi
+Router --> Browser : Render EvaluasiPage → EvaluationForm
+Browser --> User : Form 4 bagian tampil
+
+User -> Browser : Mengisi Bagian 1: Profil\n(Nama, Usia, Kunjungan Pertama)
+User -> Browser : Mengisi Bagian 2: UX & Visual\n(Rating bintang Kemudahan + Tampilan)
+Browser -> Form : handleStarClick(category, value)
+Form -> Form : ratings state diperbarui
+
+User -> Browser : Mengisi Bagian 3: Evaluasi Fitur\n(Rating Galeri, Kuis, Dampak Pengamatan)
+User -> Browser : Mengisi Bagian 4: Kesimpulan\n(NPS 1-10, Fitur Favorit, Kendala, Saran, Ide Riil)
+
+User -> Browser : Klik "Kirim Evaluasi"
+Browser -> Form : handleSubmit(e)
+Form -> Form : e.preventDefault()\nsetIsSubmitting(true)
+Form -> Form : new FormData(form)
+Form -> Formspree : HTTP POST https://formspree.io/f/mnjkdrkg\n(body: FormData, Accept: application/json)
+
+alt response.ok
+  Formspree --> Form : HTTP 200 OK
+  Form -> Form : setIsSuccess(true)\nform.reset()\nratings direset ke 0
+  Browser --> User : Tampilan "Terima Kasih!" dengan ikon centang
+else response error
+  Formspree --> Form : HTTP error
+  Form --> Browser : alert("Terjadi kesalahan saat mengirim data.")
+  Browser --> User : Alert error tampil
+end
+
+@enduml
+```
+
+---
+
+## 4. COMPONENT DIAGRAM
+
+```plantuml
+@startuml
+skinparam ComponentBackgroundColor #f9f7f4
+skinparam ComponentBorderColor #3E352B
+skinparam InterfaceBackgroundColor #4a5942
+skinparam ArrowColor #4a5942
+skinparam PackageBackgroundColor #f2eee3
+
+package "Next.js App Router (src/app/)" {
+  [layout.tsx] as AppLayout
+  [page.tsx (Beranda)] as PageHome
+  [galeri/page.tsx] as PageGaleri
+  [galeri/[category]/page.tsx] as PageGaleriCat
+  [species/[id]/page.tsx] as PageSpecies
+  [tour/page.tsx] as PageTour
+  [denah/page.tsx] as PageDenah
+  [kuis/page.tsx] as PageKuis
+  [evaluasi/page.tsx] as PageEvaluasi
+}
+
+package "Layout Components (src/components/layout/)" {
+  [Header.tsx] as Header
+  [WelcomeModal.tsx] as WelcomeModal
+}
+
+package "Home Components (src/components/home/)" {
+  [FeaturesSection.tsx] as FeaturesSection
+  [InteractiveMap.tsx] as InteractiveMap
+}
+
+package "Gallery Components (src/components/galeri/)" {
+  [CategoryGalleryClient.tsx] as CategoryGallery
+}
+
+package "Quiz Component (src/components/quiz/)" {
+  [ZoologyQuiz.tsx] as ZoologyQuiz
+}
+
+package "Evaluasi Component (src/components/evaluasi/)" {
+  [EvaluationForm.tsx] as EvalForm
+}
+
+package "Virtual Tour Component (src/components/tour/)" {
+  [VirtualMuseum.tsx] as VirtualMuseum
+}
+
+package "UI Components (src/components/ui/)" {
+  [AnimalCard.tsx] as AnimalCard
+}
+
+package "Shared (src/components/)" {
+  [Landing.tsx] as Landing
+}
+
+package "Data Layer (src/data/)" {
+  [animals.ts] as DataAnimals
+  [quiz.ts] as DataQuiz
+}
+
+package "Type Definitions (src/types/)" {
+  [animal.ts] as TypeAnimal
+}
+
+package "Static Assets (public/)" {
+  [PANO_*.jpg (6 panoramas)] as PanoramaImages
+  [*.png / *.jpg (images)] as StaticImages
+}
+
+package "External Libraries" {
+  [GSAP + ScrollTrigger] as GSAP
+  [Three.js] as Three
+  [React Three Fiber\n@react-three/fiber] as R3F
+  [React Three Drei\n@react-three/drei] as Drei
+  [html2canvas] as H2C
+  [Formspree API] as Formspree
+  [Next.js Google Fonts\n(Geist, Playfair Display)] as Fonts
+}
+
+' App Layout wires
+AppLayout --> Header
+AppLayout --> WelcomeModal
+AppLayout --> Fonts
+
+' Pages to components
+PageHome --> Landing
+Landing --> FeaturesSection
+
+PageGaleri --> GSAP
+PageGaleriCat --> CategoryGallery
+PageGaleriCat --> DataAnimals
+
+PageSpecies --> DataAnimals
+
+PageTour --> VirtualMuseum
+PageDenah --> InteractiveMap
+
+PageKuis --> ZoologyQuiz
+PageEvaluasi --> EvalForm
+
+' Component internal dependencies
+FeaturesSection ..> PageGaleri : Link /galeri
+FeaturesSection ..> PageDenah : Link /denah
+FeaturesSection ..> PageKuis : Link /kuis
+FeaturesSection ..> PageTour : Link /tour
+
+CategoryGallery --> AnimalCard
+CategoryGallery --> TypeAnimal
+
+InteractiveMap --> AnimalCard
+InteractiveMap --> DataAnimals
+
+AnimalCard --> TypeAnimal
+AnimalCard ..> PageSpecies : Link /species/[id]
+
+ZoologyQuiz --> DataQuiz
+ZoologyQuiz --> GSAP
+ZoologyQuiz --> H2C
+
+VirtualMuseum --> Three
+VirtualMuseum --> R3F
+VirtualMuseum --> Drei
+VirtualMuseum --> PanoramaImages
+VirtualMuseum --> GSAP
+
+EvalForm --> Formspree
+
+DataAnimals --> TypeAnimal
+
+@enduml
+```
+
+---
+
+## 5. DEPLOYMENT DIAGRAM
+
+```plantuml
+@startuml
+skinparam NodeBackgroundColor #f9f7f4
+skinparam NodeBorderColor #3E352B
+skinparam ArrowColor #4a5942
+skinparam ArtifactBackgroundColor #f2eee3
+
+node "Perangkat Pengguna" {
+  node "Browser (Chrome / Firefox / Safari)" {
+    artifact "React 19\n(Client-side Runtime)" as ReactRuntime
+    artifact "Three.js WebGL\n(Panorama 360° Rendering)" as WebGL
+    artifact "GSAP\n(Animation Engine)" as GSAPClient
+    artifact "html2canvas\n(Sertifikat Generator)" as H2CClient
+  }
+}
+
+node "Hosting Platform\n(Next.js Static / Server)" {
+  artifact "Next.js 16\n(App Router)" as NextApp
+  
+  node "Static Pages (SSG/SSR)" {
+    artifact "/\n(Beranda)" as RouteHome
+    artifact "/galeri\n(Galeri Kategori)" as RouteGaleri
+    artifact "/galeri/[category]\n(Galeri per Kategori)" as RouteGaleriCat
+    artifact "/species/[id]\n(Detail Spesies)" as RouteSpecies
+    artifact "/denah\n(Denah Interaktif)" as RouteDenah
+    artifact "/kuis\n(Misi Zoologi)" as RouteKuis
+    artifact "/tour\n(Virtual Tour)" as RouteTour
+    artifact "/evaluasi\n(Form Evaluasi)" as RouteEvaluasi
+  }
+  
+  node "Static Data (TypeScript Modules)" {
+    artifact "animals.ts\n(Data Spesies)" as DataAnimals
+    artifact "quiz.ts\n(Data Soal & Kategori)" as DataQuiz
+    artifact "animal.ts\n(TypeScript Types)" as TypeAnimal
+  }
+  
+  node "Static Assets (/public)" {
+    artifact "PANO_*.jpg\n(6 Panorama 360°)" as Panoramas
+    artifact "*.png / *.jpg\n(Gambar pendukung)" as Images
+    artifact "*.glb\n(3D Model Assets)" as GLBFiles
+  }
+}
+
+node "External Services" {
+  artifact "Formspree API\nhttps://formspree.io/f/mnjkdrkg\n(Form Submission)" as Formspree
+  artifact "ImageKit CDN\nhttps://ik.imagekit.io/bhiaoqt1n/\n(Gambar Satwa)" as ImageKit
+  artifact "Unsplash CDN\nhttps://images.unsplash.com/\n(Gambar Satwa)" as Unsplash
+  artifact "Google Fonts\n(Geist, Playfair Display)" as GFonts
+}
+
+' User to browser
+"Perangkat Pengguna" --> NextApp : HTTP/HTTPS Request
+
+' Next.js to pages
+NextApp --> RouteHome
+NextApp --> RouteGaleri
+NextApp --> RouteGaleriCat
+NextApp --> RouteSpecies
+NextApp --> RouteDenah
+NextApp --> RouteKuis
+NextApp --> RouteTour
+NextApp --> RouteEvaluasi
+
+' Pages to data
+RouteGaleriCat --> DataAnimals
+RouteSpecies --> DataAnimals
+RouteDenah --> DataAnimals
+RouteKuis --> DataQuiz
+DataAnimals --> TypeAnimal
+
+' Pages to assets
+RouteTour --> Panoramas
+RouteHome --> Images
+
+' Client-side connections
+ReactRuntime --> Formspree : HTTP POST (EvaluationForm)
+ReactRuntime --> ImageKit : Muat gambar satwa
+ReactRuntime --> Unsplash : Muat gambar satwa
+ReactRuntime --> GFonts : Muat font
+
+' Client rendering
+NextApp --> ReactRuntime : HTML + JS Bundle
+WebGL --> Panoramas : Muat panorama
+GSAPClient --> WebGL : Animasi transisi ruangan
+
+@enduml
+```
+
+---
+
+## 6. SITEMAP WEBSITE (MindMap)
+
+```plantuml
+@startmindmap
+skinparam ArrowColor #4a5942
+skinparam NodeBackgroundColor #f9f7f4
+skinparam NodeBorderColor #3E352B
+
+* Museum Zoologi Bogor\n(Edutourism)
+
+** Beranda /
+*** WelcomeModal (satu kali per sesi)
+*** FeaturesSection (4 kartu fitur)
+
+** Galeri Satwa /galeri
+*** Mamalia /galeri/mamalia
+**** Detail Spesies /species/paus-biru
+**** Detail Spesies /species/badak-jawa
+**** Detail Spesies /species/gajah-sumatera
+**** Detail Spesies /species/harimau-sumatera
+**** Detail Spesies /species/orangutan
+**** ... (spesies lainnya)
+*** Burung /galeri/burung
+**** Detail Spesies /species/elang-jawa
+**** Detail Spesies /species/kasuari-gelambir-ganda
+**** ... (spesies lainnya)
+*** Reptil & Amfibi /galeri/reptil
+**** ... (spesies lainnya)
+*** Ikan /galeri/ikan
+**** ... (spesies lainnya)
+*** Invertebrata /galeri/invertebrata
+**** ... (spesies lainnya)
+
+** Denah Interaktif /denah
+*** Ruang Burung I → AnimalCard list
+*** Ruang Burung II → AnimalCard list
+*** Ruang Mamalia → AnimalCard list
+*** Serangga I → AnimalCard list
+*** Serangga II → AnimalCard list
+*** Reptil & Amfibi → AnimalCard list
+*** Ruang Paus → AnimalCard list
+*** Ikan & Moluska → AnimalCard list
+
+** Virtual Tour /tour
+*** Ruang Burung I (PANO_20251124_121533.jpg)
+*** Ruang Burung II (Gemini_Generated_Image)
+*** Ruang Mamalia (PANO_20251124_121647.jpg)
+*** Serangga I (PANO_20251124_115615.jpg)
+*** Serangga II (PANO_20251124_120353.jpg)
+*** Reptil & Amfibi (PANO_20251124_113647.jpg)
+
+** Kuis /kuis
+*** Welcome Screen
+*** Pilih Kategori
+**** Seluruh Area (10 soal acak)
+**** Mamalia
+**** Burung
+**** Reptil & Amfibi
+**** Ikan
+**** Invertebrata
+*** Playing Screen (Soal + 4 Opsi)
+*** Result Screen
+**** Isi Nama
+**** Sertifikat (800x800px)
+**** Unduh PNG
+
+** Evaluasi /evaluasi
+*** Bagian 1: Profil Pengunjung
+*** Bagian 2: UX & Visual (Rating Bintang)
+*** Bagian 3: Evaluasi Fitur
+*** Bagian 4: Kesimpulan & Saran
+*** Kirim → Formspree API
+
+@endmindmap
+```

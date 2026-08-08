@@ -12,11 +12,11 @@ export const animalsData: AnimalData[] = [
     category: 'MAMALIA',
     room: 'paus',
     image: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=800&q=80',
-    museumImage: 'https://images.unsplash.com/photo-1598426002980-0a2a229a4a75?auto=format&fit=crop&w=800&q=80', // Contoh foto kerangka paus
-    habitat: 'Samudra terbuka di seluruh dunia, dari kutub hingga perairan tropis.',
+    museumImage: 'https://images.unsplash.com/photo-1598426002980-0a2a229a4a75?auto=format&fit=crop&w=800&q=80',
+    habitat: 'Samudra terbuka di seluruh dunia, dari perairan kutub hingga tropis.',
     conservationStatus: 'Genting',
-    funFact: 'Suara paus biru dapat terdengar hingga jarak 1.600 km — lebih jauh daripada sinyal radio AM!',
-    description: 'Paus biru adalah makhluk terbesar yang pernah ada di Bumi, dengan panjang mencapai 33 meter dan berat hingga 190 ton. Museum Zoologi Bogor (MZB) menyimpan koleksi kerangka paus biru yang menjadi daya tarik utama, memperlihatkan skala sesungguhnya dari raksasa laut ini. Meski volumenya luar biasa, paus biru hidup dari krill — krustasea seukuran jari — yang disaring menggunakan lempeng baleen di mulutnya. Setiap hari ia menelan sekitar 4 ton krill. Keberadaannya yang semakin langka mengingatkan kita betapa rawannya titan lautan ini terhadap perburuan dan perubahan iklim.'
+    funFact: 'Berdasarkan artikel Wikipedia, paus biru adalah hewan terbesar yang diketahui pernah ada di Bumi, melebihi ukuran dinosaurus terbesar.',
+    description: 'Berdasarkan ensiklopedia Wikipedia, Paus Biru (Balaenoptera musculus) adalah mamalia laut yang termasuk dalam subordo paus balin. Dengan panjang mencapai 29,9 meter dan berat hingga 199 ton, paus biru merupakan hewan terbesar di Bumi. Spesimen kerangkanya di Museum Zoologi Bogor menjadi bukti nyata keanekaragaman fauna laut dunia. Paus biru utamanya memangsa kril dan dapat memancarkan frekuensi suara rendah yang merambat hingga ratusan kilometer di lautan.'
   },
   {
     id: 'badak-jawa',
@@ -26,10 +26,10 @@ export const animalsData: AnimalData[] = [
     room: 'mamalia',
     image: 'https://ik.imagekit.io/bhiaoqt1n/image.jpg',
     museumImage: 'https://ik.imagekit.io/bhiaoqt1n/skripsi/IMG_20251124_122607.jpg',
-    habitat: 'Hutan hujan tropis dataran rendah, kini hanya tersisa di Taman Nasional Ujung Kulon.',
+    habitat: 'Hutan hujan tropis dataran rendah, kini terbatas di Taman Nasional Ujung Kulon.',
     conservationStatus: 'Kritis',
-    funFact: 'Populasi Badak Jawa saat ini diperkirakan hanya 72 ekor — menjadikannya mamalia darat terlangka di Bumi.',
-    description: 'Dijuluki maskot MZB, Badak Jawa adalah salah satu pameran paling ikonik dalam koleksi museum. Berbeda dengan badak Afrika yang memiliki dua cula, badak Jawa hanya bercula satu yang tersusun dari keratin — material yang sama dengan kuku manusia. Kulitnya yang berlipat-lipat menyerupai zirah baja, memberikan perlindungan alami sekaligus membuatnya tampak seperti makhluk dari era prasejarah. Menyaksikan spesimennya di MZB adalah kesempatan langka untuk berhadapan muka dengan raksasa yang kini nyaris punah.'
+    funFact: 'Catatan Wikipedia menyebutkan Badak Jawa sebagai salah satu mamalia besar terlangka di dunia dengan cula tunggal pada jantan.',
+    description: 'Menurut data Wikipedia, Badak Jawa (Rhinoceros sondaicus) adalah anggota famili Rhinocerotidae dan satu dari lima spesies badak yang masih hidup. Ciri khas utamanya adalah memiliki cula tunggal sepanjang 20–27 cm pada jantan. Sebagai maskot pameran MZB, spesimen badak Jawa ini menggambarkan karakteristik kulitnya yang berlapis seperti zirah. Spesies ini diklasifikasikan Kritis (Critically Endangered) oleh IUCN akibat perburuan dan hilangnya habitat.'
   },
   {
     id: 'gajah-sumatera',
@@ -39,10 +39,10 @@ export const animalsData: AnimalData[] = [
     room: 'mamalia',
     image: 'https://ik.imagekit.io/bhiaoqt1n/049420900_1458881164-20160325-gajah-sumatra-GMS-3.jpg',
     museumImage: '',
-    habitat: 'Hutan dataran rendah dan pegunungan rendah di Pulau Sumatera.',
+    habitat: 'Hutan dataran rendah dan pegunungan di Pulau Sumatera.',
     conservationStatus: 'Kritis',
-    funFact: 'Gajah Sumatera adalah subspesies gajah Asia terkecil, namun otaknya adalah yang terbesar di antara semua hewan darat.',
-    description: 'Gajah Sumatera merupakan insinyur ekosistem sejati. Pergerakannya melalui hutan menciptakan jalur yang menjadi jalan air dan habitat bagi hewan lain. MZB memiliki koleksi tengkorak dan gading gajah Sumatera yang memperlihatkan anatomi mengesankan dari mamalia darat terbesar Indonesia ini. Sayangnya, deforestasi dan konflik dengan manusia telah menyusutkan populasinya hingga kurang dari 3.000 ekor. Setiap individunya memiliki cetakan telinga yang unik, layaknya sidik jari pada manusia.'
+    funFact: 'Menurut Wikipedia, Gajah Sumatera mengonsumsi hingga 150 kg tumbuh-tumbuhan per hari dan bertindak sebagai pemencar biji tanaman hutan.',
+    description: 'Berdasarkan dokumen Wikipedia, Gajah Sumatera (Elephas maximus sumatranus) adalah salah satu dari tiga subspesies gajah Asia yang diakui. Memiliki tinggi bahu antara 2 hingga 3,2 meter dan berat 2 hingga 4 ton. Di Museum Zoologi Bogor, tengkorak dan spesimen gajah Sumatera menjadi sarana edukasi mengenai pentingnya pelestarian mamalia darat terbesar di Indonesia ini dari ancaman deforestasi.'
   },
   {
     id: 'harimau-sumatera',
@@ -52,10 +52,10 @@ export const animalsData: AnimalData[] = [
     room: 'mamalia',
     image: 'https://ik.imagekit.io/bhiaoqt1n/images%20(3).jpg',
     museumImage: 'https://ik.imagekit.io/bhiaoqt1n/skripsi/IMG_20251124_114808.jpg',
-    habitat: 'Hutan primer, sekunder, dan hutan gambut di Pulau Sumatera.',
+    habitat: 'Hutan hujan tropis, hutan gambut, dan pegunungan di Sumatera.',
     conservationStatus: 'Kritis',
-    funFact: 'Harimau Sumatera adalah satu-satunya subspesies harimau yang masih hidup di Indonesia setelah harimau Jawa dan harimau Bali dinyatakan punah.',
-    description: 'Sebagai predator puncak di Sumatera, harimau ini menjaga keseimbangan ekosistem dengan mengontrol populasi mangsa. Koleksi taksidermia dan kerangka harimau Sumatera di MZB menampilkan detail menakjubkan dari fisiologi pemburu ulung ini — mulai dari cakar yang bisa ditarik masuk, hingga pola loreng yang unik seperti sidik jari. Ukurannya memang lebih kecil dari subspesies harimau lain, namun kelincahan dan kekuatan gigitannya jauh lebih ditakuti di habitatnya.'
+    funFact: 'Wikipedia mencatat Harimau Sumatera sebagai satu-satunya anggota subspesies harimau kepulauan Sunda yang masih bertahan hidup.',
+    description: 'Menurut artikel Wikipedia, Harimau Sumatera (Panthera tigris sumatrae) adalah subspesies harimau asli Pulau Sumatera dengan ukuran paling kecil dibanding harimau daratan Asia. Warna kulitnya gelap dengan pola garis hitam yang rapat untuk kamuflase di hutan lebat. Koleksi taksidermia harimau Sumatera di MZB menampilkan morfologi predator puncak ini yang kini berstatus Kritis pada daftar IUCN.'
   },
   {
     id: 'orangutan',
@@ -65,10 +65,10 @@ export const animalsData: AnimalData[] = [
     room: 'mamalia',
     image: 'https://ik.imagekit.io/bhiaoqt1n/Orang_Utan,_Semenggok_Forest_Reserve,_Sarawak,_Borneo,_Malaysia.jpg',
     museumImage: 'https://ik.imagekit.io/bhiaoqt1n/skripsi/IMG_20251124_115412.jpg',
-    habitat: 'Hutan hujan tropis dataran rendah dan pegunungan di Sumatera bagian utara.',
+    habitat: 'Kanopi hutan hujan tropis dataran rendah di Sumatera bagian utara.',
     conservationStatus: 'Kritis',
-    funFact: 'Orangutan berbagi sekitar 96,9% DNA dengan manusia, dan anaknya disusui hingga 8 tahun — masa menyusu terlama di antara semua mamalia selain manusia.',
-    description: 'Orangutan adalah satu-satunya kera besar yang hidup di Asia, dan namanya berasal dari bahasa Melayu yang berarti "manusia hutan." Di MZB, spesimennya dipajang dalam pose yang memperlihatkan panjang lengan mereka yang luar biasa — bisa mencapai 2,2 meter dari ujung ke ujung. Mereka adalah arsitek hutan yang handal, membangun sarang baru dari ranting setiap malam. Kecerdasan mereka terlihat dalam penggunaan alat: dari ranting untuk mengambil madu hingga daun sebagai penutup saat hujan.'
+    funFact: 'Data Wikipedia menunjukkan orangutan menghabiskan hampir seluruh waktunya di pepohonan (arboreal) dan membuat sarang baru tiap malam.',
+    description: 'Berdasarkan rujukan Wikipedia, Orangutan Sumatera (Pongo abelii) adalah spesies orangutan yang hidup di Pulau Sumatera. Hewan arboreal ini dikenal memiliki kecerdasan tinggi dalam menggunakan alat-alat sederhana di alam liar. Di pameran MZB, spesimen orangutan ditampilkan untuk memperlihatkan struktur anatomi lengan yang panjang untuk bergerak di antara kanopi hutan.'
   },
 
   // ==========================================
@@ -82,10 +82,10 @@ export const animalsData: AnimalData[] = [
     room: 'burung1',
     image: 'https://ik.imagekit.io/bhiaoqt1n/elang-jawa-03_foto_BI_-Fahrul-Amama__EDIT-2.jpg',
     museumImage: '',
-    habitat: 'Hutan hujan tropis pegunungan di Pulau Jawa, pada ketinggian 500–3.000 mdpl.',
+    habitat: 'Hutan primer dan sekunder pegunungan Pulau Jawa.',
     conservationStatus: 'Genting',
-    funFact: 'Elang Jawa diyakini sebagai inspirasi utama dari simbol negara Indonesia, Garuda Pancasila, berkat jambul dan postur gagahnya.',
-    description: 'Elang Jawa adalah puncak dari rantai makanan di hutan pegunungan Jawa. Dengan rentang sayap mencapai 120 cm, ia berburu mamalia kecil, burung, dan kadal dengan kecepatan menukik yang mendebarkan. Jambul di kepalanya yang berdiri tegak saat waspada menjadi ciri khas yang membuatnya begitu ikonik. MZB memiliki spesimen awetan yang ditampilkan secara dramatis, memperlihatkan setiap detail bulu dan cakarnya. Keberadaannya di alam liar adalah indikator kesehatan hutan Jawa.'
+    funFact: 'Wikipedia mengidentifikasi Elang Jawa sebagai burung yang dianggap identik dengan lambang negara Republik Indonesia, yaitu Garuda.',
+    description: 'Menurut Wikipedia, Elang Jawa (Nisaetus bartelsi) adalah salah satu spesies elang berukuran sedang dari famili Accipitridae yang endemik di Pulau Jawa. Burung ini memiliki jambul khas di kepalanya yang terdiri dari 2–4 helai bulu sepanjang hingga 12 cm. Spesimen awetan Elang Jawa di MZB memperlihatkan ciri fisik menonjol dari predator udara yang terancam punah ini.'
   },
   {
     id: 'kasuari-gelambir-ganda',
@@ -95,10 +95,10 @@ export const animalsData: AnimalData[] = [
     room: 'burung1',
     image: 'https://ik.imagekit.io/bhiaoqt1n/Fauna-Kasuari-Burung-Bongsor-Khas-Papua.jpg',
     museumImage: '',
-    habitat: 'Hutan hujan tropis dataran rendah dan pegunungan di Papua dan Australia bagian utara.',
+    habitat: 'Hutan hujan tropis dataran rendah di Papua dan pulau sekitarnya.',
     conservationStatus: 'Rentan',
-    funFact: 'Kasuari jantan adalah ayah tunggal sejati — ia mengerami telur sendirian selama 50 hari dan mengasuh anaknya hingga 9 bulan.',
-    description: 'Dengan tinggi hingga 1,8 meter dan berat mencapai 85 kg, kasuari adalah burung terbesar kedua di dunia. Casque atau tanduk tanduk keratinnya di atas kepala diduga berfungsi untuk membelah semak belukar atau komunikasi akustik. Namun yang paling menakutkan adalah cakar tengahnya yang lurus dan tajam seperti belati — mampu mengoyak musuh dalam sekali tendangan. Koleksi kasuari di MZB memperlihatkan kemegahan burung purba yang berkeliaran di hutan Papua ini.'
+    funFact: 'Sumber Wikipedia mencatat kasuari memiliki cakar tengah yang tajam seperti belati sepanjang hingga 12 cm untuk pertahanan diri.',
+    description: 'Berdasarkan data Wikipedia, Kasuari Gelambir Ganda (Casuarius casuarius) adalah spesies burung tidak dapat terbang yang berukuran sangat besar dari genus Casuarius. Memiliki ketopong (*casque*) berbentuk tanduk di atas kepala serta dua gelambir merah di leher. Koleksi spesimen kasuari di MZB memperlihatkan postur tubuh burung yang berperan penting dalam penyebaran biji buah di hutan Papua.'
   },
   {
     id: 'cendrawasih-kuning-besar',
@@ -108,10 +108,10 @@ export const animalsData: AnimalData[] = [
     room: 'burung2',
     image: 'https://ik.imagekit.io/bhiaoqt1n/image%20(1).jpg',
     museumImage: '',
-    habitat: 'Kanopi hutan dataran rendah di Kepulauan Aru dan Papua bagian selatan.',
+    habitat: 'Hutan dataran rendah Kepulauan Aru dan bagian selatan Papua.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Nama latinnya "apoda" berarti "tanpa kaki" — karena pedagang Eropa abad ke-16 menerima spesimen tanpa kaki dan mengira burung surga ini tidak pernah mendarat.',
-    description: 'Burung Cendrawasih adalah mahkota keindahan Flora-Fauna Papua. Bulu ekornya yang menjuntai panjang berwarna kuning keemasan berkilau seperti surai saat pejantan menari untuk memikat betina. Tarian pejantan di dahan pohon merupakan salah satu pertunjukan paling dramatis di alam liar. MZB menyimpan koleksi spesimen cendrawasih yang sangat beragam, menjadikannya galeri burung surga terlengkap di Indonesia. Setiap bulu yang tampak sederhana ternyata memiliki struktur nano yang memantulkan cahaya secara berbeda.'
+    funFact: 'Wikipedia mencatat nama spesies "apoda" berarti "tanpa kaki", merujuk pada mitos abad pertengahan pedagang Eropa.',
+    description: 'Menurut artikel Wikipedia, Cendrawasih Kuning Besar (Paradisaea apoda) adalah burung dari famili Paradisaeidae. Pejantan memiliki bulu hiasan samping yang panjang berwarna kuning keemasan yang digunakan saat tarian ritual untuk memikat betina. Spesimen burung cendrawasih di MZB menampilkan keindahan warna bulu fauna khas Indonesia Timur.'
   },
   {
     id: 'rangkong-gading',
@@ -121,10 +121,10 @@ export const animalsData: AnimalData[] = [
     room: 'burung1',
     image: 'https://ik.imagekit.io/bhiaoqt1n/20160627burung_enggang.jpg',
     museumImage: '',
-    habitat: 'Hutan hujan tropis dataran rendah di Semenanjung Malaya, Sumatera, dan Kalimantan.',
+    habitat: 'Hutan hujan tropis dataran rendah di Sumatera dan Kalimantan.',
     conservationStatus: 'Sangat Kritis',
-    funFact: 'Casque atau tanduk rangkong gading padat berisi, berbeda dari rangkong lain — dan inilah yang membuatnya diburu untuk diukir, seperti gading gajah.',
-    description: 'Rangkong Gading adalah penjaga hutan yang tak tergantikan. Paruhnya yang besar memungkinkannya memakan buah-buahan keras yang tak bisa diproses hewan lain, menjadikannya pemencar biji paling efektif di hutan Kalimantan. Bunyi kepakan sayapnya yang keras terdengar dari jauh bagai pukulan kayu, menandai wilayah kekuasaannya. Koleksi spesimen di MZB menjadi bukti nyata keberadaan burung megah yang kini terancam oleh perburuan liar untuk diambil casque-nya yang bernilai tinggi di pasar gelap.'
+    funFact: 'Berdasarkan Wikipedia, balung (casque) rangkong gading bersifat padat dan keras, membuatnya sering diburu secara ilegal.',
+    description: 'Berdasarkan Wikipedia, Rangkong Gading (Rhinoplax vigil) adalah burung berukuran besar dari famili Bucerotidae. Ciri khususnya adalah balung padat berwarna merah-kuning di atas paruh. Kehadiran spesimennya di MZB membantu mengedukasi masyarakat mengenai ancaman kepunahan burung pemencar biji ini akibat perdagangan ilegal.'
   },
   {
     id: 'merak-hijau',
@@ -134,10 +134,10 @@ export const animalsData: AnimalData[] = [
     room: 'burung2',
     image: 'https://ik.imagekit.io/bhiaoqt1n/Fauna-Burung-Merak-Hijau-Keindahan-yang-Terancam.jpg',
     museumImage: '',
-    habitat: 'Hutan gugur dan sabana di Jawa, serta beberapa wilayah di Asia Tenggara daratan.',
+    habitat: 'Hutan terbuka dan tepi hutan di Jawa dan daratan Asia Tenggara.',
     conservationStatus: 'Genting',
-    funFact: 'Ekor panjang yang mengembang indah pada merak jantan disebut "train" — dan setiap "mata" di bulu itu adalah karya arsitektur nano yang memantulkan cahaya secara iridesen.',
-    description: 'Berbeda dari saudaranya Merak Biru dari India, Merak Hijau adalah spesies asli Asia Tenggara yang hampir punah. Warna hijaunya yang metalik berkilau seperti zamrud di bawah sinar matahari. Tarian merak jantan yang mengembangkan ekornya sepanjang hingga 3 meter adalah salah satu pemandangan paling megah di dunia satwa liar. MZB menyimpan spesimen utuh merak hijau Jawa yang seni penataannya memperlihatkan kemegahan burung yang kini terancam oleh perburuan dan hilangnya habitat.'
+    funFact: 'Wikipedia mencatat bulu ekor jantan merak hijau dapat tumbuh hingga panjang 2 meter dengan motif bulat menyerupai mata.',
+    description: 'Menurut informasi Wikipedia, Merak Hijau (Pavo muticus) adalah spesies burung dari suku Phasianidae. Memiliki bulu berwarna hijau keemasan iridescent di leher dan dada. Koleksi spesimen di MZB menampilkan ekor megah merak jantan yang dimekarkan untuk pemodelan visual pengunjung.'
   },
 
   // ==========================================
@@ -151,10 +151,10 @@ export const animalsData: AnimalData[] = [
     room: 'reptil',
     image: 'https://ik.imagekit.io/bhiaoqt1n/images%20(4).jpg',
     museumImage: '',
-    habitat: 'Pulau Komodo, Rinca, Flores, dan Gili Motang di Provinsi Nusa Tenggara Timur.',
+    habitat: 'Pulau Komodo, Rinca, Flores, Gili Motang, dan Gili Dasami di NTT.',
     conservationStatus: 'Genting',
-    funFact: 'Komodo betina mampu bereproduksi secara partenogenesis — menghasilkan keturunan tanpa pembuahan jantan, sebuah fenomena langka pada vertebrata besar.',
-    description: 'Komodo adalah kadal terbesar yang masih hidup di Bumi, mewarisi garis evolusi purba yang telah berlangsung jutaan tahun. Dengan panjang mencapai 3 meter dan berat lebih dari 70 kg, ia adalah predator puncak di ekosistem pulau-pulau kecil. Lidahnya yang bercabang mendeteksi bau darah dari jarak hingga 10 kilometer. Kelenjar bisa di rahangnya mengandung senyawa antikoagulan yang melemahkan mangsa. Spesimen dan kerangka komodo di MZB menjadi jendela ilmu yang membawa kita ke zaman ketika reptil raksasa masih menguasai daratan.'
+    funFact: 'Wikipedia mencatat Komodo sebagai spesies kadal terbesar di dunia yang masih hidup saat ini.',
+    description: 'Berdasarkan rujukan Wikipedia, Komodo (Varanus komodoensis) adalah spesies kadal terbesar yang tergolong dalam famili Varanidae. Panjang tubuhnya dapat mencapai 3 meter dengan berat melebihi 70 kg. Spesimen komodo di MZB memberikan gambaran nyata tentang anatomi reptil purba endemik Nusa Tenggara Timur ini.'
   },
   {
     id: 'penyu-hijau',
@@ -164,10 +164,10 @@ export const animalsData: AnimalData[] = [
     room: 'reptil',
     image: 'https://ik.imagekit.io/bhiaoqt1n/images%20(5).jpg',
     museumImage: '',
-    habitat: 'Samudra tropis dan subtropis di seluruh dunia; bertelur di pantai berpasir Indonesia.',
+    habitat: 'Samudra tropis dan subtropis di seluruh dunia.',
     conservationStatus: 'Genting',
-    funFact: 'Penyu hijau dapat bernavigasi ribuan kilometer kembali ke pantai tempat ia menetas — menggunakan medan magnet Bumi sebagai "GPS" alami.',
-    description: 'Penyu hijau adalah penjelajah samudra yang telah mengarungi lautan sejak zaman dinosaurus. Nama "hijau" bukan berasal dari warna cangkangnya, melainkan dari warna lemak tubuhnya yang berwarna hijau karena diet lamun. MZB memiliki koleksi lengkap cangkang penyu berbagai ukuran yang memperlihatkan pertumbuhan dari tukik muda hingga individu dewasa berusia puluhan tahun. Setiap kali penyu betina kembali ke pantai untuk bertelur, ia sedang melakukan perjalanan kembali ke memori lokasi yang tertanam ribuan kilometer jauhnya.'
+    funFact: 'Menurut Wikipedia, nama penyu hijau berasal dari warna hijau pada lemak yang terletak di bawah cangkangnya.',
+    description: 'Menurut dokumen Wikipedia, Penyu Hijau (Chelonia mydas) adalah penyu laut besar yang tergolong dalam famili Cheloniidae. Cangkangnya berbentuk pipih dan lebar dengan panjang mencapai 1,5 meter. Di MZB, cangkang dan spesimen penyu hijau disajikan untuk mengedukasi pelestarian habitat pesisir.'
   },
   {
     id: 'sanca-batik',
@@ -177,10 +177,10 @@ export const animalsData: AnimalData[] = [
     room: 'reptil',
     image: 'https://ik.imagekit.io/bhiaoqt1n/Sanca-batik-2767763170.jpg',
     museumImage: '',
-    habitat: 'Hutan hujan, semak belukar, dan daerah dekat sungai di Asia Tenggara.',
+    habitat: 'Hutan hujan, rawa, dan pemukiman di Asia Tenggara.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Sanca batik adalah ular terpanjang di dunia — rekor individu tercatat mencapai 7,67 meter, dan MZB menyimpan salah satu spesimen terpanjang di Indonesia.',
-    description: 'Pola sisik sanca batik yang rumit seperti motif batik Nusantara adalah kamuflase sempurna di lantai hutan. Meski tak berbisa, ular ini melumpuhkan mangsanya — dari tikus hingga rusa kecil — dengan lilitan yang menekan sistem kardiovaskular korban. Rahangnya yang bisa terbuka sangat lebar memungkinkannya menelan mangsa yang lebih besar dari kepalanya sendiri. Spesimen sanca batik di MZB dipajang dalam panjang penuh, memberikan gambaran skala yang membuat pengunjung berdecak kagum.'
+    funFact: 'Wikipedia menyebutkan Ular Sanca Batik sebagai ular terpanjang di dunia yang dapat tumbuh lebih dari 6,5 meter.',
+    description: 'Berdasarkan data Wikipedia, Ular Sanca Batik (Malayopython reticulatus) adalah spesies ular dari famili Pythonidae. Pola warna sisiknya berbentuk jaring bercorak mirip kain batik yang berfungsi sebagai kamuflase di lantai hutan. Spesimen sanca batik di MZB menampilkan morfologi tubuh ular constrictor tanpa bisa ini.'
   },
   {
     id: 'buaya-muara',
@@ -190,10 +190,10 @@ export const animalsData: AnimalData[] = [
     room: 'reptil',
     image: 'https://ik.imagekit.io/bhiaoqt1n/SaltwaterCrocodile.jpg',
     museumImage: '',
-    habitat: 'Muara sungai, hutan mangrove, dan pesisir dari India hingga Australia.',
+    habitat: 'Muara sungai, hutan bakau, dan perairan pesisir Indo-Pasifik.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Buaya muara memiliki gigitan terkuat dari semua hewan yang pernah diukur — 16.000 Newton, setara dengan tekanan sebuah truk berat.',
-    description: 'Buaya muara adalah reptil terbesar yang masih hidup di Bumi, dengan panjang mencapai 6 meter dan berat lebih dari satu ton. Ia adalah survivor evolusi — desain tubuhnya hampir tidak berubah selama 200 juta tahun. Buaya muara mampu menyelam hingga 1 jam dan berenang menyeberangi lautan — inilah yang membuat populasinya tersebar dari India hingga Australia. Meski tampak lamban di darat, mereka mampu meledak dengan kecepatan mengejutkan saat mengincar mangsa di tepian air. MZB memiliki tengkorak dan kerangka buaya berukuran besar yang sangat mengesankan.'
+    funFact: 'Menurut Wikipedia, Buaya Muara adalah reptil terbesar yang masih hidup dan memiliki kekuatan gigitan terbesar di antara hewan darat/perairan.',
+    description: 'Menurut riset Wikipedia, Buaya Muara (Crocodylus porosus) adalah jenis buaya terbesar dari famili Crocodylidae. Panjangnya bisa mencapai 6–7 meter dengan berat hingga 1.000 kg. Koleksi kerangka dan spesimen buaya muara di MZB menjadi sarana pembelajaran mengenai predator puncak ekosistem perairan payau.'
   },
   {
     id: 'katak-pohon-jawa',
@@ -203,10 +203,10 @@ export const animalsData: AnimalData[] = [
     room: 'reptil',
     image: 'https://ik.imagekit.io/bhiaoqt1n/SaltwaterCrocodile.jpg',
     museumImage: '',
-    habitat: 'Hutan primer dan sekunder di pegunungan Pulau Jawa, pada ketinggian 300–1.500 mdpl.',
+    habitat: 'Hutan hujan tropis pegunungan di Pulau Jawa.',
     conservationStatus: 'Genting',
-    funFact: 'Katak pohon Jawa adalah amfibi yang bisa "terbang" — selaput di antara jari-jarinya yang panjang memungkinkannya meluncur dari satu pohon ke pohon lain hingga 15 meter.',
-    description: 'Katak pohon Jawa adalah endemik berharga yang hanya ditemukan di Pulau Jawa. Kulitnya yang hijau zamrud berfungsi sebagai penyamaran sempurna di dedaunan. Yang paling unik adalah strategi reproduksinya: betina mengocok lendir menjadi sarang busa di atas permukaan air — telur menetas di busa, lalu berudu jatuh ke air di bawahnya. Koleksi spesimen MZB mendokumentasikan keanekaragaman amfibi Jawa, termasuk spesies-spesies yang kini semakin langka akibat penyakit chytrid dan hilangnya habitat hutan.'
+    funFact: 'Wikipedia mencatat katak pohon ini memiliki selaput lebar di kaki untuk meluncur di antara pepohonan.',
+    description: 'Berdasarkan artikel Wikipedia, Katak Pohon Jawa (Rhacophorus javanus) adalah amfibi dari famili Rhacophoridae yang endemik di Pulau Jawa. Katak ini hidup arboreal dan membuat sarang busa di atas perairan untuk menampung telurnya. Koleksi spesimen MZB mendokumentasikan amfibi langka ini.'
   },
 
   // ==========================================
@@ -220,10 +220,10 @@ export const animalsData: AnimalData[] = [
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/IMG_20250706_193520.jpg',
     museumImage: '',
-    habitat: 'Perairan laut dalam di sekitar perairan Sulawesi Utara (Manado), pada kedalaman 150–700 meter.',
+    habitat: 'Laut dalam perairan Manado, Sulawesi Utara (kedalaman 150–200 meter).',
     conservationStatus: 'Rentan',
-    funFact: 'Coelacanth pertama kali ditemukan di Manado pada 1997 — membuktikan bahwa "fosil hidup" berusia 400 juta tahun ini masih eksis di perairan Indonesia.',
-    description: 'Penemuan Coelacanth Indonesia (Latimeria menadoensis) adalah salah satu berita zoologi terbesar abad ke-20. Ikan ini sempat dianggap punah 65 juta tahun lalu bersama dinosaurus — hingga ditemukan hidup-hidup. Siripnya yang berdaging dan bergerak seperti anggota gerak mendukung teori bahwa ikan ini adalah nenek moyang tetrapoda darat. MZB menyimpan spesimen autentik coelacanth Indonesia yang menjadi koleksi ilmiah paling berharga di museum, menarik perhatian peneliti dari seluruh dunia.'
+    funFact: 'Wikipedia mencatat Coelacanth sebagai "fosil hidup" yang diperkirakan punah 66 juta tahun lalu sebelum ditemukan kembali tahun 1997 di Indonesia.',
+    description: 'Menurut catatan Wikipedia, Coelacanth Indonesia (Latimeria menadoensis) adalah salah satu dari dua spesies ikan coelacanth yang masih hidup. Ikan ini tergolong ordo Coelacanthiformes dengan sirip berlobus berdaging. Spesimen autentik Coelacanth di MZB merupakan salah satu koleksi sains paling berharga.'
   },
   {
     id: 'arwana-super-red',
@@ -233,23 +233,23 @@ export const animalsData: AnimalData[] = [
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/arwana-super-red-1_169.jpeg',
     museumImage: '',
-    habitat: 'Sungai gambut dan rawa di Kalimantan Barat, khususnya daerah Kapuas dan Sentarum.',
+    habitat: 'Sungai dan rawa air hitam di Kalimantan Barat (Sungai Kapuas & Danau Sentarum).',
     conservationStatus: 'Kritis',
-    funFact: 'Arwana Super Red pernah dijual dengan harga lebih dari 400 juta rupiah per ekor di pasar ikan hias internasional — menjadikannya salah satu ikan paling mahal di dunia.',
-    description: 'Arwana Super Red adalah kebanggaan perairan Kalimantan dengan sisik besar berwarna merah membara yang berkilau seperti batu permata. Ikan purba ini telah ada jauh sebelum zaman es, mewarisi desain tubuh yang hampir sempurna. Ia adalah predator permukaan yang mampu melompat setengah meter untuk menangkap serangga, bahkan burung kecil di atas air. Rahang bawahnya yang menonjol dan kumis di ujung mulutnya —antennae sensitif yang mendeteksi gerakan mangsa— menjadikannya salah satu predator paling efisien di alam sungai tropis.'
+    funFact: 'Wikipedia mencatat Arwana Super Red sebagai ikan hias air tawar bernilai sangat tinggi yang dilindungi oleh CITES.',
+    description: 'Berdasarkan Wikipedia, Arwana Super Red (Scleropages legendrei) adalah ikan air tawar dari famili Osteoglossidae yang berasal dari Kalimantan Barat. Memiliki sisik berukuran besar dengan warna merah menyala pada individu dewasa. Tampilan spesimennya di MZB mengedukasi keanekaragaman ikan endemik air tawar Indonesia.'
   },
   {
-    id: 'ikan-pari-manta',
+    id: 'pari-manta',
     name: 'Pari Manta',
     scientificName: 'Mobula birostris',
     category: 'IKAN',
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/716bf15d-d072-4b02-b606-efcc72ec37c7_169.jpg',
     museumImage: '',
-    habitat: 'Perairan tropis dan subtropis, termasuk Raja Ampat, Komodo, dan Nusa Tenggara.',
+    habitat: 'Perairan pelagis tropis dan subtropis di Indonesia.',
     conservationStatus: 'Rentan',
-    funFact: 'Pari manta memiliki otak terbesar relatif terhadap tubuhnya di antara semua ikan — bahkan menunjukkan kemampuan mengenali diri sendiri di cermin, tanda kecerdasan tinggi.',
-    description: 'Dengan rentang sirip mencapai 7 meter, pari manta adalah ikan bertulang rawan terbesar di lautan. Ia terbang melayang dalam air seperti elang di angkasa, menggunakan sepasang "tanduk" cepalika di kepala untuk menggiring plankton masuk ke mulutnya yang menganga. MZB memiliki koleksi spesimen pari dari berbagai spesies, mendokumentasikan keanekaragaman elasmobranchia di perairan Indonesia yang merupakan habitat pari terkaya di dunia. Populasinya terancam oleh perburuan untuk diambil insang (gill raker) yang dipercaya memiliki khasiat dalam pengobatan tradisional Tiongkok.'
+    funFact: 'Wikipedia mencatat Pari Manta Laut Samudra sebagai spesies pari terbesar di dunia dengan lebar tubuh hingga 7 meter.',
+    description: 'Menurut artikel Wikipedia, Pari Manta Laut (Mobula birostris) adalah spesies pari terbesar dalam famili Mobulidae. Ikan ini memakan plankton dengan cara menyaring air melalui sirip kepala (*cephalic fins*). Koleksi spesimen pari di MZB memperlihatkan keanekaragaman elasmobranchia laut.'
   },
   {
     id: 'hiu-gergaji',
@@ -259,10 +259,10 @@ export const animalsData: AnimalData[] = [
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/hiu-gergajijpg-20221008103437.jpg',
     museumImage: '',
-    habitat: 'Perairan laut dangkal tropis dan subtropis, termasuk muara sungai di Indonesia.',
+    habitat: 'Perairan pantai dangkal dan muara sungai tropis.',
     conservationStatus: 'Sangat Kritis',
-    funFact: 'Moncong bergigi gergaji (rostrum) pada hiu gergaji bukan hanya untuk menyerang — ia penuh dengan reseptor elektromagnetik yang mendeteksi gerakan mangsa yang bersembunyi di pasir.',
-    description: 'Hiu gergaji adalah salah satu ikan paling unik dan paling terancam punah di dunia. Moncongnya yang panjang berjajar gigi tajam seperti gergaji berfungsi sebagai sensor canggih sekaligus senjata mematikan — diayunkan dari sisi ke sisi untuk menebas sekolah ikan. Spesies ini terancam punah akibat tangkapan sampingan di jaring nelayan dan kehilangan habitat. Koleksi spesimen di MZB menjadi dokumentasi penting dari hewan yang kini hampir tidak mungkin ditemukan di alam bebas.'
+    funFact: 'Data Wikipedia menunjukkan moncong gergaji (rostrum) digunakan untuk melumpuhkan ikan mangsa di dasar perairan.',
+    description: 'Berdasarkan entri Wikipedia, Ikan Gergaji atau Hiu Gergaji (keluarga Pristidae) adalah famili pari yang memiliki moncong memanjang bergigi melintang menyerupai gergaji. Spesimennya di MZB memberikan ilustrasi mengenai adaptasi unik organ rostrum untuk berburu.'
   },
   {
     id: 'ikan-sumpit',
@@ -272,10 +272,10 @@ export const animalsData: AnimalData[] = [
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/Ikan-Sumpit-1.jpg',
     museumImage: '',
-    habitat: 'Hutan mangrove, muara sungai, dan sungai bergambut di Asia Tenggara, termasuk Indonesia.',
+    habitat: 'Hutan bakau dan muara sungai air payau di Asia Tenggara.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Ikan sumpit mampu menembak "peluru" air hingga jarak 3 meter dengan ketepatan luar biasa, bahkan memperhitungkan pembiasan cahaya di permukaan air.',
-    description: 'Ikan sumpit adalah satu-satunya hewan yang secara rutin berteman dengan fisika optik untuk berburu. Ini bukan tembakan liar — ikan sumpit mempelajari sudut tembak yang tepat, mempertimbangkan refraksi cahaya antara air dan udara. Ia menekan lidahnya ke alur khusus di langit-langit mulutnya untuk membentuk "laras senjata," lalu menutup insang secara paksa untuk menghasilkan semprotan air bertekanan tinggi. Serangga yang hinggap di daun di atas air pun jatuh tersentak — dan langsung disambar. Koleksi spesimen di MZB memperlihatkan struktur anatomi unik yang mendukung kemampuan berburu luar biasa ini.'
+    funFact: 'Wikipedia mencatat ikan sumpit mampu menyemprotkan air hingga sejauh 1,5–2 meter untuk merontokkan serangga di atas air.',
+    description: 'Menurut rujukan Wikipedia, Ikan Sumpit (Toxotes jaculatrix) adalah ikan dari famili Toxotidae yang terkenal dengan kemampuannya menembakkan tetesan air dari mulutnya untuk memangsa serangga di dahan ranting di atas permukaan air. Spesimen MZB memperlihatkan struktur mulut unik penembak air ini.'
   },
 
   // ==========================================
@@ -289,10 +289,10 @@ export const animalsData: AnimalData[] = [
     room: 'serangga2',
     image: 'https://ik.imagekit.io/bhiaoqt1n/monarch%20on%20the%20flower.jpg',
     museumImage: '',
-    habitat: 'Hutan dataran rendah, tepi hutan, dan taman di Asia Tenggara, termasuk Jawa dan Sumatra.',
+    habitat: 'Hutan hujan tropis dan taman di Asia Tenggara.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Kupu-kupu Raja dilindungi oleh hukum Indonesia — memiliki, menangkap, atau memperdagangkannya tanpa izin dapat dikenai sanksi pidana.',
-    description: 'Kupu-kupu Raja adalah mahkota keindahan di koleksi lepidoptera MZB. Sayap belakangnnya berwarna kuning emas yang berkilau metalik kontras dengan sayap bagian atas yang hitam pekat — sebuah pemandangan yang tak terlupakan saat kupu-kupu ini melayang di antara bunga. Ia memperoleh kekebalan dari predator dengan memakan tanaman Aristolochia yang mengandung racun — racun yang tersimpan dalam tubuhnya seumur hidup. MZB memiliki koleksi lepidoptera terlengkap di Asia Tenggara, memperlihatkan variasi warna dan pola yang mencengangkan dari ribuan spesies.'
+    funFact: 'Berdasarkan Wikipedia, Troides helena adalah kupu-kupu yang dilindungi Undang-Undang Republik Indonesia.',
+    description: 'Menurut informasi Wikipedia, Kupu-kupu Raja (Troides helena) adalah serangga dari famili Papilionidae. Memiliki bentang sayap yang lebar dengan perpaduan warna hitam dan kuning cerah. Koleksi serangga MZB menampilkan spesimen kupu-kupu ini sebagai bagian dari kekayaan lepidoptera Nusantara.'
   },
   {
     id: 'kepiting-kelapa',
@@ -302,10 +302,10 @@ export const animalsData: AnimalData[] = [
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/65af6fb7d77ea.png',
     museumImage: '',
-    habitat: 'Pulau-pulau kecil berpohon kelapa di wilayah Indo-Pasifik, termasuk kepulauan terpencil Indonesia.',
+    habitat: 'Pulau-pulau karang dan hutan pesisir Samudra Hindia dan Pasifik.',
     conservationStatus: 'Rentan',
-    funFact: 'Kepiting kelapa adalah artropoda darat terbesar di dunia — beratnya bisa mencapai 4 kg dengan rentang kaki hingga 1 meter, dan ia bisa memanjat pohon kelapa setinggi 6 meter!',
-    description: 'Kepiting kelapa adalah kisah evolusi yang luar biasa: seekor kerabat kelomang yang melepaskan cangkangnya, mengembangkan paru-paru yang mampu bernapas di udara, dan menjadi raksasa pulau tropis. Capitnya yang sangat kuat — diukur sebagai yang terkuat relatif terhadap tubuh di antara semua krustasea — mampu membelah batok kelapa. Meski disebut "kepiting," mereka tidak bisa berenang dan akan tenggelam jika dimasukkan ke dalam air dalam waktu lama. Koleksi spesimen kepiting kelapa di MZB memperlihatkan grandeur dari makhluk nokturnal pulau karang ini.'
+    funFact: 'Wikipedia menyebutkan Kepiting Kelapa sebagai artropoda darat terbesar di dunia dengan berat mencapai 4,1 kg.',
+    description: 'Berdasarkan Wikipedia, Kepiting Kelapa (Birgus latro) adalah jenis kelomang darat yang membesar hingga ukuran raksasa. Capitnya sangat kuat untuk mengupas buah kelapa. Di MZB, spesimen kepiting kelapa ditampilkan untuk menunjukkan keunikan krustasea darat ini.'
   },
   {
     id: 'kumbang-tanduk',
@@ -315,10 +315,10 @@ export const animalsData: AnimalData[] = [
     room: 'serangga1',
     image: 'https://ik.imagekit.io/bhiaoqt1n/kumbang-tandukjpg-20240414091548.jpg',
     museumImage: '',
-    habitat: 'Area perkebunan kelapa sawit, hutan hujan tropis, dan perkebunan kelapa di seluruh Asia Tenggara.',
+    habitat: 'Perkebunan kelapa dan hutan tropis Asia Tenggara.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Kumbang tanduk dapat mengangkat beban 850 kali berat tubuhnya sendiri — secara proporsional, ini menjadikannya "makhluk terkuat" di Bumi.',
-    description: 'Kumbang tanduk jantan menggunakan tanduknya yang panjang dan melengkung bukan untuk memangsa, melainkan untuk berduel dengan sesama jantan memperebutkan betina — mendorong dan mengungkit lawan hingga jatuh dari pohon. Meski dikenal sebagai hama kelapa sawit, perannya dalam ekosistem sebagai pengurai kayu lapuk sangat vital. MZB mengoleksi ratusan spesimen kumbang dari seluruh kepulauan Indonesia, mendokumentasikan variasi ukuran dan bentuk yang luar biasa. Koleksi ruang serangga MZB adalah salah satu yang terkaya di Asia.'
+    funFact: 'Data Wikipedia mencatat tanduk jantan digunakan untuk bertarung merebut wilayah dan pasangan.',
+    description: 'Menurut Wikipedia, Kumbang Tanduk (Oryctes rhinoceros) adalah jenis kumbang dari subfamili Dynastinae. Pejantan memiliki tanduk menonjol di kepala. Koleksi serangga MZB menyimpan spesimen ini sebagai perwakilan fauna invertebrata darat.'
   },
   {
     id: 'belalang-daun',
@@ -328,10 +328,10 @@ export const animalsData: AnimalData[] = [
     room: 'serangga1',
     image: 'https://ik.imagekit.io/bhiaoqt1n/id-11134207-7r98o-lylvqumzj02w8a.jpg',
     museumImage: '',
-    habitat: 'Hutan tropis lembap di Sulawesi, Maluku, dan Papua, tersembunyi di antara dedaunan.',
+    habitat: 'Hutan hujan tropis di Sulawesi dan sekitarnya.',
     conservationStatus: 'Resiko Rendah',
-    funFact: 'Belalang daun bukan hanya berbentuk seperti daun — tubuhnya bahkan mensimulasikan urat daun, bercak-bercak "gigitan serangga," dan tepi yang tidak rata untuk menyempurnakan tipuannya.',
-    description: 'Belalang daun adalah masterpiece seni kamuflase alam. Evolusi telah membentuk tubuhnya agar menyerupai daun hijau segar dengan sempurna — termasuk urat daun, bertekstur, bahkan dengan cekungan kecil yang menyerupai daun yang dimakan serangga lain. Bila angin berhembus, ia berayun perlahan untuk meniru gerak daun. Ilmuwan menyebut ini sebagai mimikri tingkat tinggi. Koleksi Phyllium di MZB mencakup berbagai spesies dari kepulauan Indonesia, menjadi bukti nyata betapa canggihnya pressure seleksi alam dalam membentuk morfologi organisme.'
+    funFact: 'Wikipedia mencatat belalang daun memiliki kemampuan mimikri tinggi yang menyerupai bentuk dan urat daun.',
+    description: 'Berdasarkan Wikipedia, Belalang Daun (Phyllium celebicum) adalah serangga dari famili Phylliidae. Bentuk tubuh dan warna hijau pipihnya menyerupai daun tanaman secara detail. Spesimennya di MZB menyajikan contoh adaptasi mimikri alamiah.'
   },
   {
     id: 'kima-raksasa',
@@ -341,10 +341,10 @@ export const animalsData: AnimalData[] = [
     room: 'ikan',
     image: 'https://ik.imagekit.io/bhiaoqt1n/Giant_clam_or_Tridacna_gigas.jpg',
     museumImage: '',
-    habitat: 'Terumbu karang dangkal di Samudera Hindia dan Pasifik, termasuk perairan Indonesia timur.',
+    habitat: 'Terumbu karang dangkal di Samudra Hindia dan Pasifik.',
     conservationStatus: 'Rentan',
-    funFact: 'Kima raksasa tidak berbahaya bagi penyelam — "mitos" menjepit kaki manusia adalah fiksi belaka. Dalam kenyataannya, katupnya menutup sangat lambat sehingga mudah dihindari.',
-    description: 'Kima raksasa adalah moluska terbesar di dunia, dengan cangkang yang bisa mencapai 1,4 meter dan berat hingga 250 kg. Namun raksasa ini adalah makhluk yang benar-benar damai — ia mendapatkan sebagian besar energinya dari alga zooxanthellae yang hidup dalam jaringan mantelnya yang berwarna-warni, bersimbiosis dalam pertunjukan warna yang spektakuler. Cangkang kima raksasa dalam koleksi MZB adalah salah satu yang terbesar yang pernah dikumpulkan dari perairan Indonesia, menjadi benda pameran yang selalu memukau pengunjung dengan skalanya yang mustahil.'
+    funFact: 'Wikipedia mencatat Kima Raksasa sebagai moluska bivalvia terbesar yang dapat tumbuh hingga 1,2 meter.',
+    description: 'Menurut rujukan Wikipedia, Kima Raksasa (Tridacna gigas) adalah spesies kima terbesar dari famili Cardiidae. Spesimen cangkang kima di MZB menjadi daya tarik pameran invertebrata laut dengan ukuran cangkangnya yang luar biasa.'
   },
 ];
 
